@@ -1,0 +1,179 @@
+.Main {
+    overflow-y: hidden;
+}
+
+.MainPanel {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    justify-content: center;
+    background-color: rgb(236, 240, 245);
+    display: flex;
+}
+
+.inputPanel{
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    max-width: 1930px;
+    
+}
+
+.detailsPanel{
+    display: flex;
+    justify-content: center;
+    width: 25%;
+    overflow-y: auto;
+    margin-left: 20px;
+    height: 100%;
+    position: relative;
+    top: 105px;
+    height: calc(100% - 125px);
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  tr:nth-child(even) {background-color: #f2f2f2;}
+  
+  .filterPanel{
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    height: 90px;
+    
+    background-color: rgb(255, 255, 255);
+    padding-top: 15px;
+
+    background: #fff !important;
+    border-radius: 3px !important;
+    border-bottom: 3px solid rgb(25, 118, 210) !important;
+    box-shadow: 0 1px 1px rgba(0,0,0,.1) !important;
+    margin-bottom: 20px !important;
+    max-width: 1930px;
+
+    
+}
+
+.Mapbox{
+    border-radius: 5px;
+    width: 100%;
+    
+    background-color: rgb(255, 255, 255);
+    
+    background: #fff !important;
+    border-radius: 3px !important;
+    border-bottom: 3px solid rgb(25, 118, 210) !important;
+    box-shadow: 0 1px 1px rgba(0,0,0,.1) !important;
+    
+}
+
+
+.dataTable{
+    /* background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(25, 118, 210) !important; */
+
+    background: #fff !important;
+    border-radius: 3px !important;
+    border-bottom: 3px solid rgb(25, 118, 210) !important;
+    box-shadow: 0 1px 1px rgba(0,0,0,.1) !important;
+    margin-bottom: 20px;
+   
+    position: relative;
+    top: 105px;
+    height: calc(100% - 125px) !important;
+    width: 75%;
+}
+
+.formControl{
+    width:225px !important;
+    margin-left: 20px !important;
+    
+    
+
+}
+
+.formControl2{
+  width:300px !important;
+  margin-left: 20px !important;
+}
+
+.formControl3{
+  width:115px !important;
+  margin-left: 10px !important;
+}
+
+.css-bghv3y-MuiToggleButtonGroup-root{
+    height: 40px !important;
+    margin-left: 20px !important;
+}
+
+
+
+.row{
+    display: flex;
+    margin-bottom: 10px;
+  }
+
+  .ApplyButton{
+    height: 40px;
+    margin-left: 20px !important;
+  }
+
+  .price-range-selector-container{
+    width: auto !important;
+    margin-left: 4px !important;
+    justify-content: center;
+  }
+
+  .price-range-text-field{
+    width: 125px !important;
+  }
+
+  .price-range-field-container{
+    flex-basis: auto !important;
+  }
+
+  .leaflet-popup-content{
+    width: 300px !important;
+    height: 160px !important;
+  }
+
+  .MuiSelect-select {
+    height: 25px !important;
+    padding-top: 15px !important;
+  } 
+
+  h1{
+    margin-top: 0px;
+    margin-bottom: 10px;
+  }
+
+  h2{
+    margin-top: 0px;
+    margin-bottom: 10px;
+  }
+  h3{
+    margin-top: 0px;
+    margin-bottom: 10px;
+  }
+  h4{
+    margin-top: 0px;
+    margin-bottom: 10px;
+  }
+  h5{
+    margin-top: 0px;
+    margin-bottom: 10px;
+  }
+
