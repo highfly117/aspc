@@ -57,7 +57,7 @@ const Main = () => {
             },
         },
         { field: 'Type', headerName: 'Type', width: 100 },
-        { field: 'URL', headerName: 'URL', width: 50, renderCell: (params) => (<a href={params.value} target="_blank" rel="noopener noreferrer">View</a>) },
+        { field: 'URL', headerName: 'URL', width: 50, renderCell: (params) => (<a href={params.value} target="_blank" rel="noopener noreferrer">View</a>) }
     ];
 
 
