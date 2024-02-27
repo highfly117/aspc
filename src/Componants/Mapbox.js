@@ -62,7 +62,7 @@ const WeatherMap = (props) => {
 
 
   return (
-    <div style={{ width: "100%", height: "50%" }}>
+    <div style={{ width: "100%", height: "100%" }}>
 
       <MapContainer
         style={{ width: '100%', height: '100%' }}
