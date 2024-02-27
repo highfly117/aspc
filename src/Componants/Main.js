@@ -22,10 +22,11 @@ const Main = () => {
     const [priceRange, setPriceRange] = useState({ minPrice: '', maxPrice: '' });
     const [rowSelectionModel, setRowSelectionModel] = useState('');
     const [FloorArea, setFloorArea] = useState('')
+    const [ignoreSelectionChange, setIgnoreSelectionChange] = useState(false);
 
 
     const columns = [
-        { field: 'ImageLink', headerName: 'Image', width: 200, renderCell: (params) => (<img src={params.value} alt="Property" style={{ width: "200px" }} />) },
+        { field: 'ImageLink', headerName: 'Image', width: 200, cellClassName: 'noLeftPadding',  renderCell: (params) => (<img src={params.value} alt="Property" style={{ width: "200px" }} />) },
         { field: 'StatusType', headerName: 'Status Type', width: 130 },
         { field: 'PriceType', headerName: 'Price Type', width: 115 },
         { field: 'PriceValue', headerName: 'Price Value', width: 115, valueFormatter: ({ value }) => value ? `£${value.toLocaleString()}` : "N/A" },
@@ -65,7 +66,7 @@ const Main = () => {
 
         const loadData = async () => {
             try {
-                
+
                 const response = await axios.get(`${process.env.REACT_APP_API_URL_Properties}/data`);
                 // Transform data here to match DataGrid expectations
 
@@ -143,8 +144,8 @@ const Main = () => {
         const fetchStatus = async () => {
             try {
                 const response = await axios.get(`${process.env.REACT_APP_API_URL_Properties}/status`);
-                
-                
+
+
 
                 const fetchedStatus = response.data.map(status => ({
                     value: status, // Use the type string as the value
@@ -197,6 +198,7 @@ const Main = () => {
 
     const handleApplyFilter = async () => {
         try {
+            setIgnoreSelectionChange(true);
             // Map selected values to their corresponding labels
             const selectedLocationLabels = locationCategory.map(value => {
                 const location = locations.find(loc => loc.value === value);
@@ -384,6 +386,16 @@ const Main = () => {
                     </div>
 
                     <DataGrid className="dataTable"
+                       getRowClassName={(params) => {
+                        if (params.row.StatusType.startsWith('Under offer')) {
+                          return 'rowUnderOffer';
+                        } else if (params.row.StatusType.startsWith('Closing')) {
+                          return 'rowClosing';
+                        } else if (params.row.StatusType.startsWith('Sold')) {
+                          return 'rowSold';
+                        }
+                        return '';
+                      }}
                         rows={data}
                         columns={columns}
                         pageSize={5}
@@ -391,13 +403,14 @@ const Main = () => {
                         checkboxSelection={false}
                         rowHeight={100}
                         onRowSelectionModelChange={(newSelectionModel) => {
-                            setRowSelectionModel(newSelectionModel);
-                            // Assuming you want to update the map locations based on the new selection
-                            const selectedData = data.filter(row => newSelectionModel.includes(row.id));
-                            setMapLocations(selectedData);
-                            console.log(newSelectionModel); // Now this should correctly log to the console
+                            if (!ignoreSelectionChange) {
+                                setRowSelectionModel(newSelectionModel);
+                                // Assuming you want to update the map locations based on the new selection
+                                const selectedData = data.filter(row => newSelectionModel.includes(row.id));
+                                setMapLocations(selectedData);
+                                console.log(newSelectionModel); // Now this should correctly log to the console
+                            }
                         }}
-
 
                     />
 

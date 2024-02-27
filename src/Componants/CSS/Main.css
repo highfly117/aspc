@@ -121,6 +121,7 @@ table {
 
 
 
+
 .row{
     display: flex;
     margin-bottom: 10px;
@@ -175,5 +176,21 @@ table {
   h5{
     margin-top: 0px;
     margin-bottom: 10px;
+  }
+
+  .rowUnderOffer {
+    border-top: 5px solid rgb(128, 204, 61) !important;
+  }
+  .rowClosing {
+    border-top: 5px solid rgb(204, 61, 128) !important;
+  }
+  .rowSold {
+    border-top: 5px solid rgb(0, 0, 0) !important;
+    -webkit-filter: grayscale(1);
+    filter: grayscale(1);
+  }
+
+  .noLeftPadding {
+    padding-left: 0 !important;
   }
 

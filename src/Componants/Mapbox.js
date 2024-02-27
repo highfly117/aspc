@@ -1,3 +1,4 @@
+import React from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet'
 
@@ -116,4 +117,6 @@ const WeatherMap = (props) => {
   );
 };
 
-export default WeatherMap;
+const MemoizedWeatherMap = React.memo(WeatherMap);
+
+export default MemoizedWeatherMap;
