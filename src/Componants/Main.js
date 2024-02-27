@@ -237,7 +237,7 @@ const Main = () => {
                 Address: `${item.Address.Address1}, ${item.Address.Address2}, ${item.Address.Postcode}`,
                 postition: item.Address.position,
                 ImageLink: item.ImageLink, // Assuming you want to show images
-                URL: item.URL, // Assuming you want to make URLs clickable
+                URL: item.URL // Assuming you want to make URLs clickable
                 // Other transformations as needed
             }));
             console.log(transformedData)
