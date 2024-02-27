@@ -1,9 +1,8 @@
-import { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
-import L, { Icon } from 'leaflet'
+import L from 'leaflet'
 
 import "../../node_modules/leaflet/dist/leaflet.css"
-import axios from 'axios';
+
 
 const ChangeView = ({ center, zoom }) => {
   const map = useMap();
@@ -51,10 +50,6 @@ const WeatherMap = (props) => {
     shadowAnchor: [2, 31],
     popupAnchor: [1, -17]
   });
-
-  const API_KEY = 'i0iQBy5pn2PzEj5BMD9ua43GDQkqIEZh';
-  const DATA_FIELD = 'precipitationIntensity';
-  const TIMESTAMP = (new Date()).toISOString();
   
 
   const position = props.locations.length === 1 ? [props.locations[0].postition.lat, props.locations[0].postition.lng] :

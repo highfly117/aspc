@@ -8,20 +8,19 @@ import WeatherMap from "./Mapbox";
 import PriceRangeSelector from "./PriceRangeSelector";
 
 
-const GOOGLE_GEOCODING_API_KEY = process.env.REACT_APP_API_URL_GOOGLE_GEOCODING_API_KEY;
+
 
 const Main = () => {
     const [data, setData] = useState([]);
     const [statusCategory, setStatusCategory] = useState([]);
     const [typeCategory, setTypeCategory] = useState([]);
     const [locationCategory, setLocationCategory] = useState([]);
-    const [isSelectFocused, setIsSelectFocused] = useState(false);
     const [locations, setLocations] = useState([]);
     const [Types, setTypes] = useState([]);
     const [Categorys, SetCategory] = useState([]);
     const [MapLocations, setMapLocations] = useState([])
     const [priceRange, setPriceRange] = useState({ minPrice: '', maxPrice: '' });
-    const [rowSelectionModel, setRowSelectionModel] = React.useState('');
+    const [rowSelectionModel, setRowSelectionModel] = useState('');
     const [FloorArea, setFloorArea] = useState('')
 
 
@@ -66,7 +65,8 @@ const Main = () => {
 
         const loadData = async () => {
             try {
-                const response = await axios.get("http://192.168.1.102:5000/api/v1/properties/data");
+                
+                const response = await axios.get(`${process.env.REACT_APP_API_URL_Properties}/data`);
                 // Transform data here to match DataGrid expectations
 
                 const transformedData = response.data.map(item => ({
@@ -97,7 +97,7 @@ const Main = () => {
         const fetchLocations = async () => {
             try {
                 // Step 2: Fetch location data from your API
-                const response = await axios.get('http://192.168.1.102:5000/api/v1/properties/postcodes');
+                const response = await axios.get(`${process.env.REACT_APP_API_URL_Properties}/postcodes`);
                 let areaCounter = 1; // Initialize a counter to ensure unique keys
 
                 // Generate locations with a global counter to ensure unique values
@@ -122,7 +122,7 @@ const Main = () => {
     useEffect(() => {
         const fetchTypes = async () => {
             try {
-                const response = await axios.get('http://192.168.1.102:5000/api/v1/properties/types');
+                const response = await axios.get(`${process.env.REACT_APP_API_URL_Properties}/types`);
                 // Map the fetched types array to an array of objects with value and label properties
                 const fetchedTypes = response.data.map(type => ({
                     value: type, // Use the type string as the value
@@ -142,8 +142,9 @@ const Main = () => {
     useEffect(() => {
         const fetchStatus = async () => {
             try {
-                const response = await axios.get('http://192.168.1.102:5000/api/v1/properties/status');
-
+                const response = await axios.get(`${process.env.REACT_APP_API_URL_Properties}/status`);
+                
+                
 
                 const fetchedStatus = response.data.map(status => ({
                     value: status, // Use the type string as the value
@@ -222,7 +223,7 @@ const Main = () => {
 
 
             // Make a GET request with the selected location values
-            const response = await axios.get(`http://192.168.1.102:5000/api/v1/properties/datafilter?${queryParams}`);
+            const response = await axios.get(`${process.env.REACT_APP_API_URL_Properties}/datafilter?${queryParams}`);
 
             // Update your data state with the response data
             const transformedData = response.data.map(item => ({
