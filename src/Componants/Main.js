@@ -238,6 +238,7 @@ const Main = () => {
                 URL: item.URL, // Assuming you want to make URLs clickable
                 // Other transformations as needed
             }));
+            console.log(transformedData)
             setData(transformedData);
             setMapLocations(transformedData.slice(0, 200))
         } catch (error) {
