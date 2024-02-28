@@ -24,7 +24,7 @@
 .detailsPanel{
     display: flex;
     justify-content: center;
-    width: 25%;
+    width: 30%;
     overflow-y: auto;
     margin-left: 0;
     height: 100%;
@@ -183,14 +183,22 @@ table {
 
   .rowUnderOffer {
     border-top: 5px solid rgb(128, 204, 61) !important;
+    
   }
   .rowClosing {
     border-top: 5px solid rgb(204, 61, 128) !important;
+    
   }
   .rowSold {
     border-top: 5px solid rgb(0, 0, 0) !important;
     -webkit-filter: grayscale(1);
     filter: grayscale(1);
+   
+  }
+
+  .MuiDataGrid-withBorderColor{
+    min-height: 100px !important;
+    
   }
 
   .noLeftPadding {

@@ -26,8 +26,32 @@ const Main = () => {
 
 
     const columns = [
-        { field: 'ImageLink', headerName: 'Image', width: 200, cellClassName: 'noLeftPadding',  renderCell: (params) => (<img src={params.value} alt="Property" style={{ width: "200px" }} />) },
-        { field: 'StatusType', headerName: 'Status Type', width: 130 },
+        {
+            field: 'ImageLink', headerName: 'Image', width: 200, cellClassName: 'noLeftPadding', renderCell: (params) => (
+                <div>
+                    {params.row.StatusType !== "None" && (
+                        <div style={{
+                            
+                            position: "relative",
+                            top: params.row.StatusType.includes("Under offer") ? "39px":"50px",
+                            left: params.row.StatusType.includes("Under offer") ? "-62px" : "-19px",
+                            background: params.row.StatusType.includes("Closing") ? "rgb(204, 61, 128)" : "rgb(128, 204, 61)",
+                            fontWeight: "700",
+                            color: "white",
+                            fontSize: "16px",
+                            textWrap: "initial"
+                        }}>
+                            {params.row.StatusType}
+                        </div>)}
+                    <img src={params.value} alt="Property" style={{
+                        zIndex:"-1",
+                        width: "225px",
+                        position: "relative",
+                        left: "0px"
+                        }}/>
+                </div>
+            )
+        },
         { field: 'PriceType', headerName: 'Price Type', width: 115 },
         { field: 'PriceValue', headerName: 'Price Value', width: 115, valueFormatter: ({ value }) => value ? `£${value.toLocaleString()}` : "N/A" },
         { field: 'Address', headerName: 'Address', width: 375 },
@@ -241,8 +265,13 @@ const Main = () => {
                 // Other transformations as needed
             }));
             console.log(transformedData)
+
+
             setData(transformedData);
             setMapLocations(transformedData.slice(0, 200))
+
+            setIgnoreSelectionChange(false);
+
         } catch (error) {
             console.error('Failed to fetch filtered data:', error);
         }
@@ -386,16 +415,16 @@ const Main = () => {
                     </div>
 
                     <DataGrid className="dataTable"
-                       getRowClassName={(params) => {
-                        if (params.row.StatusType.startsWith('Under offer')) {
-                          return 'rowUnderOffer';
-                        } else if (params.row.StatusType.startsWith('Closing')) {
-                          return 'rowClosing';
-                        } else if (params.row.StatusType.startsWith('Sold')) {
-                          return 'rowSold';
-                        }
-                        return '';
-                      }}
+                        getRowClassName={(params) => {
+                            if (params.row.StatusType.startsWith('Under offer')) {
+                                return 'rowUnderOffer';
+                            } else if (params.row.StatusType.startsWith('Closing')) {
+                                return 'rowClosing';
+                            } else if (params.row.StatusType.startsWith('Sold')) {
+                                return 'rowSold';
+                            }
+                            return '';
+                        }}
                         rows={data}
                         columns={columns}
                         pageSize={5}
@@ -405,15 +434,17 @@ const Main = () => {
                         onRowSelectionModelChange={(newSelectionModel) => {
                             if (!ignoreSelectionChange) {
                                 setRowSelectionModel(newSelectionModel);
-                                // Assuming you want to update the map locations based on the new selection
                                 const selectedData = data.filter(row => newSelectionModel.includes(row.id));
-                                setMapLocations(selectedData);
-                                console.log(newSelectionModel); // Now this should correctly log to the console
+                                if (selectedData.length > 0) {
+                                    setMapLocations(selectedData);
+                                }
+                                console.log(newSelectionModel);
                             }
-                        }}
+                        }
 
+
+                        }
                     />
-
                     <div className="detailsPanel">
                         <div className="Mapbox">
                             {data.length > 0 ? (
