@@ -44,7 +44,7 @@ const Main = () => {
                             {params.row.StatusType}
                         </div>)}
                     <img src={params.value} alt="Property" style={{
-                        zIndex:"-1",
+                        zIndex:"0",
                         width: "225px",
                         position: "relative",
                         left: "0px"
@@ -52,6 +52,7 @@ const Main = () => {
                 </div>
             )
         },
+        { field: 'Addon', headerName: 'Add on', width: 115 },
         { field: 'PriceType', headerName: 'Price Type', width: 115 },
         { field: 'PriceValue', headerName: 'Price Value', width: 115, valueFormatter: ({ value }) => value ? `£${value.toLocaleString()}` : "N/A" },
         { field: 'Address', headerName: 'Address', width: 375 },
@@ -96,6 +97,7 @@ const Main = () => {
 
                 const transformedData = response.data.map(item => ({
                     ...item,
+                    Addedon:item.TimeStamp,
                     id: item._id, // Ensuring each row has an 'id' property
                     StatusType: item.Status.Type,
                     PriceType: item.Price.Type,
