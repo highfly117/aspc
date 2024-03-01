@@ -97,7 +97,7 @@ const Main = () => {
 
                 const transformedData = response.data.map(item => ({
                     ...item,
-                    Addedon: item.TimeStamp,
+                    Addedon: item.TimeStamp.slice(0,10),
                     id: item._id, // Ensuring each row has an 'id' property
                     StatusType: item.Status.Type,
                     PriceType: item.Price.Type,
