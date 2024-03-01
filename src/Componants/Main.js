@@ -52,7 +52,7 @@ const Main = () => {
                 </div>
             )
         },
-        { field: 'Addon', headerName: 'Add on', width: 115 },
+        { field: 'Addedon', headerName: 'Add on', width: 115 },
         { field: 'PriceType', headerName: 'Price Type', width: 115 },
         { field: 'PriceValue', headerName: 'Price Value', width: 115, valueFormatter: ({ value }) => value ? `£${value.toLocaleString()}` : "N/A" },
         { field: 'Address', headerName: 'Address', width: 375 },
@@ -97,7 +97,7 @@ const Main = () => {
 
                 const transformedData = response.data.map(item => ({
                     ...item,
-                    Addedon:item.TimeStamp,
+                    Addedon: item.TimeStamp,
                     id: item._id, // Ensuring each row has an 'id' property
                     StatusType: item.Status.Type,
                     PriceType: item.Price.Type,
