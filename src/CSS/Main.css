@@ -9,7 +9,7 @@
     top: 0px;
     left: 0px;
     justify-content: center;
-    background-color: rgb(236, 240, 245);
+    background-color: #e9e9eb;
     display: flex;
 }
 
@@ -36,6 +36,16 @@
     background:  #fff !important;
 }
 
+.dataTable{
+  width: 50%;
+  margin-right: 30px;
+  position: relative;
+  top: 105px;
+  overflow: auto;
+  padding-right: 20px;
+  height: calc(100% - 125px)
+}
+
 
 table {
     width: 100%;
@@ -55,10 +65,9 @@ table {
     position: absolute;
     top: 0px;
     height: 90px;
-    
+    z-index: 2;
     background-color: rgb(255, 255, 255);
     padding-top: 15px;
-
     background: #fff !important;
     border-radius: 3px !important;
     border-bottom: 3px solid rgb(25, 118, 210) !important;
@@ -83,21 +92,7 @@ table {
 }
 
 
-.dataTable{
-    /* background-color: rgb(255, 255, 255);
-    border: 1px solid rgb(25, 118, 210) !important; */
 
-    background: #fff !important;
-    border-radius: 3px !important;
-    border-bottom: 3px solid rgb(25, 118, 210) !important;
-    box-shadow: 0 1px 1px rgba(0,0,0,.1) !important;
-    margin-bottom: 20px;
-   
-    position: relative;
-    top: 105px;
-    height: calc(100% - 125px) !important;
-    width: 75%;
-}
 
 .formControl{
     width:225px !important;
@@ -205,3 +200,17 @@ table {
     padding-left: 0 !important;
   }
 
+  .MuiDataGrid-root .MuiDataGrid-cell {
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    text-align: left;
+  }
+
+  .Sort-Dropdown{
+    position: absolute !important;
+    top: 95px;
+    left: 10px;
+    background: white;
+    width: 147px !important;
+
+  }

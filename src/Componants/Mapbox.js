@@ -39,7 +39,6 @@ function findGeographicCentroid(locations) {
 
 const WeatherMap = (props) => {
 
-
   console.log(props)
 
   const defaultIcon = new L.Icon({
@@ -52,14 +51,11 @@ const WeatherMap = (props) => {
     popupAnchor: [1, -17]
   });
   
-
   const position = props.locations.length === 1 ? [props.locations[0].postition.lat, props.locations[0].postition.lng] :
     findGeographicCentroid(props.locations);
 
   const MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoiaGlnaGZseTExNyIsImEiOiJjbGluNWR4amUwbDk5M2txcjcybTRpbGo0In0.pdrbNFR2lyks_o2aQizU9Q';
   const MAPBOX_URL = `https://api.mapbox.com/styles/v1/mapbox/navigation-night-v1/tiles/{z}/{x}/{y}?access_token=${MAPBOX_ACCESS_TOKEN}`;
-
-
 
   return (
     <div style={{ width: "100%", height: "100%" }}>
