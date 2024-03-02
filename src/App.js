@@ -1,5 +1,5 @@
 import './App.css';
-import Main from './Componants/Main';
+import Main from './componants/Main';
 import { CssBaseline } from '@mui/material';
 
 function App() {
