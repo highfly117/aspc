@@ -22,7 +22,6 @@ const Main = () => {
     const [FloorArea, setFloorArea] = useState('')
     const [ignoreSelectionChange, setIgnoreSelectionChange] = useState(false);
     const [filterParams, setFilterParams] = useState({});
-    const [sort, setSort] = useState('Recent')
     const [sortOption, setSortOption] = useState('Recent');
     
 
