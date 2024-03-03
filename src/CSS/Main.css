@@ -1,5 +1,6 @@
 .Main {
     overflow-y: hidden;
+    
 }
 
 .MainPanel {
@@ -213,4 +214,18 @@ table {
     background: white;
     width: 147px !important;
 
+  }
+
+  .oftotal{
+    position: absolute !important;
+    top: 175px;
+    left: 10px;
+    background-color: white;
+    width: 147px !important;
+    font-weight: 400;
+    margin: 8px;
+    font-size: 20px;
+    padding: 8px;
+    border-radius: 4px;
+    box-shadow: 0 3px 3px -3px rgba(0,0,0,.3);
   }

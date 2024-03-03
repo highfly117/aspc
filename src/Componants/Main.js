@@ -23,6 +23,7 @@ const Main = () => {
     const [ignoreSelectionChange, setIgnoreSelectionChange] = useState(false);
     const [filterParams, setFilterParams] = useState({});
     const [sortOption, setSortOption] = useState('Recent');
+    const [selectedItem, setSelectedItem] = useState(null);
     
 
     const ITEM_HEIGHT = 48;
@@ -36,6 +37,8 @@ const Main = () => {
             },
         },
     }), [ITEM_HEIGHT, ITEM_PADDING_TOP]);
+
+    
 
     const columns = [
         {
@@ -116,6 +119,21 @@ const Main = () => {
     const { locations, locationloading, locationerror } = useLocationData();
     const { types, typeloading, typeerror } = useTypeData();
     const { status, Statusloading, statuserror } = useStatusData();
+    const updateMapLocations = useCallback((selectedItem) => {
+      
+        setSelectedItem(selectedItem);
+        console.log(selectedItem)
+        
+    },[]);
+
+    const locationsForDetailsPanel = useMemo(() => {
+        // If an item is selected, create an array with just that item's location
+        if (selectedItem) {
+            return [selectedItem];
+        }
+        // Otherwise, use MapLocations
+        return MapLocations;
+    }, [selectedItem, MapLocations]);
 
     const handleCategoryChange = (event) => { setStatusCategory(event.target.value); };
     const handleAreaChange = (event) => { setFloorArea(event.target.value); };
@@ -169,8 +187,6 @@ const Main = () => {
             <div className="MainPanel">
                 <div className="inputPanel">
 
-                    
-
                     <FilterPanel
                         statusCategory={statusCategory}
                         handleCategoryChange={handleCategoryChange}
@@ -190,20 +206,21 @@ const Main = () => {
                         ITEM_HEIGHT={ITEM_HEIGHT}
                         ITEM_PADDING_TOP={ITEM_PADDING_TOP}
                         MenuProps={menuProps}
+                        items={data.length}
                     ></FilterPanel>
 
                     <DataGridTable
                         data={data}
                         columns={columns}
+                        onSelectItem={updateMapLocations}
                         setRowSelectionModel={setRowSelectionModel}
                         ignoreSelectionChange={ignoreSelectionChange}
                         setMapLocations={MapLocations}
                     ></DataGridTable>
 
-
                     <DetailsPanel
                         data={data}
-                        MapLocations={MapLocations}
+                        MapLocations={locationsForDetailsPanel}
                     ></DetailsPanel>
 
                 </div>

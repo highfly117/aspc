@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
 }
 
 .App-logo {

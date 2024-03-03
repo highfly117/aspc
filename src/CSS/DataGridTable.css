@@ -1,97 +1,111 @@
-
-
-.propertybanner{
-    /* background-color: rgb(255, 255, 255);
+.propertybanner {
+  /* background-color: rgb(255, 255, 255);
     border: 1px solid rgb(25, 118, 210) !important; */
-    display: flex;
-    background: #fff !important;
-    border-radius: 12px !important;
-    border-bottom: 3px solid rgb(25, 118, 210) !important;
-    box-shadow: 0 1px 1px rgba(0,0,0,.1) !important;
-    margin-bottom: 10px;
-    width: 100%;
-    z-index: 1;
-    height: 135px !important;
+  display: flex;
+  background: #fff !important;
+  border-radius: 8px !important;
+  
+
+  margin-bottom: 20px;
+  width: 100%;
+  z-index: 1;
+  height: 135px !important;
+  box-shadow: 0 3px 3px -3px rgba(0,0,0,.3);
 }
 
-.propertybanner.active{
+.propertybanner.active {
   background-color: rgba(167, 199, 231, 0.3) !important;
 }
 
-.Rightsplit{
-    text-align: left;
-    padding-left: 10px;
-    display: grid;
-    width: 100%;
-    max-width: 585px;
+.Rightsplit {
+  text-align: left;
+  padding-left: 10px;
+  display: grid;
+  width: 100%;
+  max-width: 585px;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  padding-left: 10px;
 }
 
 
 
-.leftsplit{
-    height: 100%;
-    min-width: 316px;
+.leftsplit {
+  height: 100%;
+  min-width: 316px;
+  border-right: 1px solid lightgray;
 }
 
-.lefttopsplit{
-    height: 80%;
-    display: flex;
+.lefttopsplit {
+  height: 80%;
+  display: flex;
 }
 
 .lefttopsplit img {
-    height: 100%;
-    width: 100%;
-    max-width: 158px;
-    border-top-left-radius: 12px;
+  height: 100%;
+  width: 100%;
+  max-width: 158px;
+
 }
 
-.leftbottomsplit{
-    text-align: left;
-    padding-left: 10px;
-    padding-right: 5px;
-    padding-top: 2px;
-    background-color: #f4f4f5;
-    height: 20%;
-    display: flex;
-    justify-content: space-between;
-    border-bottom-left-radius: 11px;
+.firstimage {
+  border-top-left-radius: 8px;
 }
 
-h1{
-    margin-top: 0px;
-    margin-bottom: 0px;
-  }
+.Secondimage {}
 
-  h2{
-    margin-top: 0px;
-    margin-bottom: 0px;
-  }
-  h3{
-    margin-top: 0px;
-    margin-bottom: 0px;
-  }
-  h4{
-    margin-top: 0px;
-    margin-bottom: 0px;
-  }
-  h5{
-    margin-top: 0px;
-    margin-bottom: 0px;
-  }
+.leftbottomsplit {
+  text-align: left;
+  padding-left: 10px;
+  padding-right: 5px;
 
-  .addon{
-    border: 3px solid purple;
-    border-radius: 12px;
-    padding: 10px;
-    font-size: 13px;
-    margin: 0px;
-    margin-bottom: 6px;
-    font-weight: 800;
-    color: purple;
+  background-color: #f4f4f5;
+  height: 20%;
+  display: flex;
+  justify-content: space-between;
+  border-bottom-left-radius: 8px;
+
+}
+
+h1 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+h2 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+h3 {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+h4 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+h5 {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.addon {
+  border: 3px solid purple;
+  border-radius: 12px;
+  padding: 10px;
+  font-size: 13px;
+  margin: 0px;
+  margin-bottom: 6px;
+  font-weight: 800;
+  color: purple;
 
 
-  }
-  p{
-    margin-top: 3px;
-    margin-bottom: 3px;
-  }
+}
+
+p {
+  margin-top: 3px;
+  margin-bottom: 3px;
+}

@@ -33,7 +33,8 @@ const FilterPanel = ({
     locations,
     ITEM_HEIGHT,
     ITEM_PADDING_TOP,
-    MenuProps }) => {
+    MenuProps,
+    items }) => {
 
     const [sortValue, setSortValue] = React.useState([]);
 
@@ -71,6 +72,7 @@ const FilterPanel = ({
                         ))}
                     </Select>
                 </FormControl>
+                
 
                 <FormControl variant="outlined" className="formControl">
                     <InputLabel id="type-multiple-chip-label-Type" shrink={true}>Type</InputLabel>
@@ -180,6 +182,8 @@ const FilterPanel = ({
                     ))}
                 </Select>
             </FormControl>
+
+            <div className="oftotal">{items} Results</div>
         </div>
     )
 

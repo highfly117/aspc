@@ -17,9 +17,9 @@ function findGeographicCentroid(locations) {
   let count = 0;
 
   locations.forEach(location => {
-    if (location.postition && location.postition.lat && location.postition.lng) {
-      totalLat += location.postition.lat;
-      totalLng += location.postition.lng;
+    if (location.postition && location.postition.Latitude && location.postition.Longitude) {
+      totalLat += location.postition.Latitude;
+      totalLng += location.postition.Longitude;
       count++;
     }
   });
@@ -51,7 +51,7 @@ const WeatherMap = (props) => {
     popupAnchor: [1, -17]
   });
   
-  const position = props.locations.length === 1 ? [props.locations[0].postition.lat, props.locations[0].postition.lng] :
+  const position = props.locations.length === 1 ? [props.locations[0].postition.Latitude, props.locations[0].postition.Longitude] :
     findGeographicCentroid(props.locations);
 
   const MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoiaGlnaGZseTExNyIsImEiOiJjbGluNWR4amUwbDk5M2txcjcybTRpbGo0In0.pdrbNFR2lyks_o2aQizU9Q';
@@ -85,8 +85,8 @@ const WeatherMap = (props) => {
             <Marker
               key={index} // Using a unique identifier from your data would be better if available
               position={[
-                location.postition?.lat || 0, // Use optional chaining with a fallback value
-                location.postition?.lng || 0  // Use optional chaining with a fallback value, corrected the typo 'postition' to 'position'
+                location.postition?.Latitude || 0, // Use optional chaining with a fallback value
+                location.postition?.Longitude || 0  // Use optional chaining with a fallback value, corrected the typo 'postition' to 'position'
               ]}
 
               icon={defaultIcon}
@@ -101,7 +101,7 @@ const WeatherMap = (props) => {
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
                     <h1>£{(location.PriceValue || 0).toLocaleString(undefined, { maximumFractionDigits: 2 })}</h1>
                     <img src={location.ImageLink || "https://cdn.aspc.co.uk/resources/office/Property/368336/Image/5645450.jpg"} width={"50%"} alt="Property"></img></div>
-
+                    <a href={location.URL}>View</a>
                 </div>
               </Popup>
             </Marker>
