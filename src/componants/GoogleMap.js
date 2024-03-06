@@ -17,6 +17,31 @@ const loadGoogleMapsScript = (callback) => {
   if (existingScript && callback) callback();
 };
 
+function findGeographicCentroid(locations) {
+  let totalLat = 0;
+  let totalLng = 0;
+  let count = 0;
+
+  locations.forEach(location => {
+    if (location.postition && location.postition.Latitude && location.postition.Longitude) {
+      totalLat += location.postition.Latitude;
+      totalLng += location.postition.Longitude;
+      count++;
+    }
+  });
+
+  if (count === 0) {
+    return null; // Return null if no valid positions found
+  }
+
+  const centroid = [
+    totalLat / count,
+    totalLng / count
+  ];
+
+  return centroid;
+}
+
 const GoogleMapProperties = ({locations}) => {
   const mapRef = useRef(null); // This ref will point to the map DOM element
   const [mapLoaded, setMapLoaded] = useState(false);
@@ -53,7 +78,7 @@ const GoogleMapProperties = ({locations}) => {
 
       initMap();
     }
-  }, [mapLoaded]); // Re-run when mapLoaded changes
+  }, [mapLoaded, locations]); // Re-run when mapLoaded changes
 
   const toggleHighlight = (markerView, property) => {
     if (markerView.content.classList.contains("highlight")) {

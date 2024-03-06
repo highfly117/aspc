@@ -6,7 +6,8 @@ export const usePropertyData = (url, transformPropertyData, filterParams, sortOp
     const [MapLocations, setMapLocations] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-
+    const [count, setCount] = useState('')
+ 
     useEffect(() => {
         const fetchData = async () => {
             setLoading(true);
@@ -19,9 +20,10 @@ export const usePropertyData = (url, transformPropertyData, filterParams, sortOp
                 const fullUrl = `${url}?${queryString}`;
                 
                 const response = await axios.get(fullUrl);
-                const transformedData = transformPropertyData(response.data);
+                const transformedData = transformPropertyData(response.data.documents);
                 setData(transformedData);
                 setMapLocations(transformedData.slice(0,100));
+                setCount(response.data.count)
             } catch (err) {
                 setError(err);
             } finally {
@@ -32,5 +34,5 @@ export const usePropertyData = (url, transformPropertyData, filterParams, sortOp
         fetchData();
     }, [url, transformPropertyData, JSON.stringify(filterParams), sortOption]); // Include sortOption in the dependency array
 
-    return { data, MapLocations, loading, error };
+    return { data, MapLocations, count, loading, error };
 };

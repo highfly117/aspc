@@ -115,7 +115,7 @@ const Main = () => {
         }));
     }, []);
 
-    const { data, MapLocations, loading, error } = usePropertyData(propertyDataUrl, transformPropertyData, filterParams, sortOption );
+    const { data, MapLocations, count, loading, error } = usePropertyData(propertyDataUrl, transformPropertyData, filterParams, sortOption );
     const { locations, locationloading, locationerror } = useLocationData();
     const { types, typeloading, typeerror } = useTypeData();
     const { status, Statusloading, statuserror } = useStatusData();
@@ -206,7 +206,7 @@ const Main = () => {
                         ITEM_HEIGHT={ITEM_HEIGHT}
                         ITEM_PADDING_TOP={ITEM_PADDING_TOP}
                         MenuProps={menuProps}
-                        items={data.length}
+                        items={count}
                     ></FilterPanel>
 
                     <DataGridTable
@@ -216,6 +216,7 @@ const Main = () => {
                         setRowSelectionModel={setRowSelectionModel}
                         ignoreSelectionChange={ignoreSelectionChange}
                         setMapLocations={MapLocations}
+                        
                     ></DataGridTable>
 
                     <DetailsPanel
