@@ -15,8 +15,8 @@ const DataGridTable = ({
 
     return (
         <div style={{ width: "50%", marginRight: "30px" }} className="dataTable">
-            {data.slice(0, 36).map((item, index) => {
-                console.log(item); // Log each item as it's rendered
+            {data.slice(0, 100).map((item, index) => {
+                
                 return (
                     <Propertybanner
                         key={item._id}

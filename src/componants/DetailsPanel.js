@@ -1,5 +1,6 @@
 import React from "react";
-import WeatherMap from "./Mapbox";
+
+import GoogleMapProperties from "./GoogleMap";
 const DetailsPanel = ({
     data,
     MapLocations
@@ -10,7 +11,7 @@ const DetailsPanel = ({
         <div className="detailsPanel">
         <div className="Mapbox">
             {data.length > 0 ? (
-                <WeatherMap locations={MapLocations} />
+                <GoogleMapProperties locations={MapLocations} />
             ) : (
                 <div>Loading map...</div>
             )}

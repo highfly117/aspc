@@ -21,7 +21,7 @@ export const usePropertyData = (url, transformPropertyData, filterParams, sortOp
                 const response = await axios.get(fullUrl);
                 const transformedData = transformPropertyData(response.data);
                 setData(transformedData);
-                setMapLocations(transformedData.slice(0,200));
+                setMapLocations(transformedData.slice(0,100));
             } catch (err) {
                 setError(err);
             } finally {
