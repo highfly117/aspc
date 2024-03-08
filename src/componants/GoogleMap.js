@@ -117,8 +117,8 @@ const GoogleMapProperties = ({locations}) => {
 
     content.innerHTML = `
       <div class="icon">
-      <img src="${imgSrc}" alt="${property.Type}" title="${property.Type}" style="width: 32px; height: 32px;">
-          <span class="fa-sr-only">${property.Type}</span>
+          <img src="${imgSrc}" alt="${property.Type}" title="${property.Type}" style="width: 32px; height: 32px;">
+          
       </div>
       <div class="details">
           <div class="price">£${property.PriceValue?.toLocaleString(undefined, { maximumFractionDigits: 2 }) || property.Status.Type +"-"+property.Status.datetime}</div>
@@ -141,7 +141,7 @@ const GoogleMapProperties = ({locations}) => {
           </div>
           <div>
               <a href=${property.URL}>View</a>
-              <span class="fa-sr-only">size</span>
+              
               
           </div>
           </div>

@@ -15,9 +15,9 @@ const Propertybanner = ({ imageUrl1, imageUrl2, priceType, price, size, pricePer
             <div className="leftsplit">
                 <div className="lefttopsplit">
                     {
-                        imageUrl1 && <img className="firstimage" src={imageUrl1} />}
+                        imageUrl1 && <img className="firstimage" src={imageUrl1+"?width=150&quality=85&autorotate=true&quot"} />}
                     {
-                        imageUrl2?.[1] && <img className="secondimage" src={imageUrl2[1]} alt="Description" />
+                        imageUrl2?.[1] && <img className="secondimage" src={imageUrl2[1] + "?width=150&quality=85&autorotate=true&quot"} alt="Description" />
                     }
                 </div>
 
