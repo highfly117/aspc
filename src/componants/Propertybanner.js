@@ -1,4 +1,4 @@
-import { useState } from "react";
+
 
 const Propertybanner = ({ imageUrl1, imageUrl2, priceType, price, size, pricePerMeter, address, description, addedDate, viewLink, isActive, toggleClass, onClick }) => {
 
@@ -7,17 +7,15 @@ const Propertybanner = ({ imageUrl1, imageUrl2, priceType, price, size, pricePer
         onClick(); // Additional onClick action (e.g., setting map location)
     };
 
-
-
     return (
 
         <div onClick={handleClick} style={{ cursor: "pointer" }} className={isActive ? "propertybanner active" : "propertybanner"}>
             <div className="leftsplit">
                 <div className="lefttopsplit">
                     {
-                        imageUrl1 && <img className="firstimage" src={imageUrl1+"?width=150&quality=85&autorotate=true&quot"} />}
+                        imageUrl1 && <img className="firstimage" alt="house 1" src={imageUrl1+"?width=149&quality=85&autorotate=true&quot"} />}
                     {
-                        imageUrl2?.[1] && <img className="secondimage" src={imageUrl2[1] + "?width=150&quality=85&autorotate=true&quot"} alt="Description" />
+                        imageUrl2?.[1] && <img className="secondimage" alt="House 2" src={imageUrl2[1] + "?width=149&quality=85&autorotate=true&quot"} />
                     }
                 </div>
 
@@ -35,7 +33,7 @@ const Propertybanner = ({ imageUrl1, imageUrl2, priceType, price, size, pricePer
                 </div>
             </div>
         </div>
-
+        
     )
 
 }

@@ -5,7 +5,8 @@ const loadGoogleMapsScript = (callback) => {
   const existingScript = document.getElementById('googleMapsScript');
   if (!existingScript) {
     const script = document.createElement('script');
-    script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyAJiDxL5x2vUHgH77_f6WOyAIVRacWUWFI&libraries=&v=weekly`;
+    const Google_API_key = process.env.REACT_APP_API_URL_GOOGLE_MAPS_API_KEY
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${Google_API_key}&libraries=&v=weekly`;
     script.id = 'googleMapsScript';
     document.body.appendChild(script);
 

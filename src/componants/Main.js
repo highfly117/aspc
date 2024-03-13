@@ -119,8 +119,10 @@ const Main = () => {
     const { locations, locationloading, locationerror } = useLocationData();
     const { types, typeloading, typeerror } = useTypeData();
     const { status, Statusloading, statuserror } = useStatusData();
+
     const updateMapLocations = useCallback((selectedItem) => {
       
+        
         setSelectedItem(selectedItem);
         console.log(selectedItem)
         
