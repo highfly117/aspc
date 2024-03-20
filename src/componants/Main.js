@@ -24,7 +24,7 @@ const Main = () => {
     const [filterParams, setFilterParams] = useState({});
     const [sortOption, setSortOption] = useState('Recent');
     const [selectedItem, setSelectedItem] = useState(null);
-    
+    const [detailsPanelLocations,setDetailsPanelLocations] = useState([]);
 
     const ITEM_HEIGHT = 48;
     const ITEM_PADDING_TOP = 8;
@@ -128,14 +128,27 @@ const Main = () => {
         
     },[]);
 
-    const locationsForDetailsPanel = useMemo(() => {
-        // If an item is selected, create an array with just that item's location
-        if (selectedItem) {
-            return [selectedItem];
-        }
-        // Otherwise, use MapLocations
-        return MapLocations;
-    }, [selectedItem, MapLocations]);
+    // const locationsForDetailsPanel = useMemo(() => {
+    //     // If an item is selected, create an array with just that item's location
+    //     if (selectedItem) {
+    //         return [selectedItem];
+    //     }
+    //     // Otherwise, use MapLocations
+    //     return MapLocations;
+    // }, [selectedItem, MapLocations]);
+
+    // Example without useMemo
+
+    
+    useEffect(() => {
+        // Perform operations that depend on the latest value of selectedItem here
+        // For example, setting a state that directly influences what gets passed to DetailsPanel
+        const newLocationsForDetailsPanel = selectedItem ? [selectedItem] : MapLocations;
+        // Assume setDetailsPanelLocations is a state setter function for a state that holds
+        // the current locations for the DetailsPanel
+        setDetailsPanelLocations(newLocationsForDetailsPanel);
+    }, [selectedItem, MapLocations]); // Depend on selectedItem and MapLocations
+
 
     const handleCategoryChange = (event) => { setStatusCategory(event.target.value); };
     const handleAreaChange = (event) => { setFloorArea(event.target.value); };
@@ -223,7 +236,7 @@ const Main = () => {
 
                     <DetailsPanel
                         data={data}
-                        MapLocations={locationsForDetailsPanel}
+                        MapLocations={detailsPanelLocations}
                     ></DetailsPanel>
 
                 </div>

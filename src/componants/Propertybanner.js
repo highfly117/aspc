@@ -29,7 +29,7 @@ const Propertybanner = ({ imageUrl1, imageUrl2, priceType, price, size, pricePer
                     <p>{description}</p></div>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "end" }}>
                     <p className="addon">Added on {addedDate} </p>
-                    <a style={{ marginTop: "auto", marginBottom: "5px" }} href={viewLink}>View</a>
+                    <a style={{ marginTop: "auto", marginBottom: "5px" }} href={viewLink} target="_blank">View</a>
                 </div>
             </div>
         </div>

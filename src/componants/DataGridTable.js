@@ -9,8 +9,10 @@ const DataGridTable = ({
     const [activeBanner, setActiveBanner] = useState(null);
 
     const toggleActiveBanner = (id) => {
-        setActiveBanner(activeBanner === id ? null : id);
-        onSelectItem(data[id]); // Assuming onSelectItem is designed to handle the selected item
+
+        const isSelectedBannerBeingDeactivated = activeBanner === id;
+        setActiveBanner(isSelectedBannerBeingDeactivated ? null : id);
+        onSelectItem(isSelectedBannerBeingDeactivated ? null : data[id]);
     };
 
     return (

@@ -1,10 +1,13 @@
 import React from "react";
 
 import GoogleMapProperties from "./GoogleMap";
+
 const DetailsPanel = ({
     data,
     MapLocations
 }) => {
+
+    console.log(MapLocations)
 
     return (
 
