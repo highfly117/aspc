@@ -1,6 +1,7 @@
 import React from "react";
 
 import GoogleMapProperties from "./GoogleMap";
+import MemoizedWeatherMap from "./Mapbox"
 
 const DetailsPanel = ({
     data,
@@ -14,7 +15,7 @@ const DetailsPanel = ({
         <div className="detailsPanel">
         <div className="Mapbox">
             {data.length > 0 ? (
-                <GoogleMapProperties locations={MapLocations} />
+                <MemoizedWeatherMap locations={MapLocations} />
             ) : (
                 <div>Loading map...</div>
             )}

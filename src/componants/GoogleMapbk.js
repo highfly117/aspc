@@ -34,45 +34,60 @@ const GoogleMapProperties = ({ locations }) => {
   };
 
   useEffect(() => {
-    loadGoogleMapsScript();
+    // This effect should only run once to ensure the map is initialized only once
+    if (!window.google || !window.google.maps) {
+      loadGoogleMapsScript();
+    }
   }, []);
 
   useEffect(() => {
-    if (!map || !locations) return;
-
-    // Clear existing markers from the map
-    markers.forEach(marker => marker.setMap(null));
-    setMarkers([]); // Reset markers state
-
-    const newMarkers = [];
-    const bounds = new window.google.maps.LatLngBounds();
-    locations.forEach(location => {
-      // Check if 'postition' exists and has valid 'Latitude' and 'Longitude'
-      if (location.postition && typeof location.postition.Latitude === 'number' && typeof location.postition.Longitude === 'number') {
-        const position = { lat: location.postition.Latitude, lng: location.postition.Longitude };
-
-        // Create a marker for each valid location
+    // This effect should only run once to ensure the map is initialized only once
+    if (!window.google || !window.google.maps) {
+      loadGoogleMapsScript();
+    }
+  }, []);
+  
+  useEffect(() => {
+    // Initialize map only if it hasn't been initialized yet
+    if (!map && window.google && window.google.maps && mapRef.current) {
+      const initialMap = new window.google.maps.Map(mapRef.current, {
+        center: { lat: 57.14589702347154, lng: -2.113011357843587 },
+        zoom: 4,
+      });
+      setMap(initialMap);
+    }
+  }, [map]);
+  
+  useEffect(() => {
+    // This effect handles updating markers when locations change
+    if (map && locations && locations.length > 0) {
+      const bounds = new window.google.maps.LatLngBounds();
+  
+      // Create or update markers
+      const newMarkers = locations.map(location => {
+        const position = new window.google.maps.LatLng(location.position.Latitude, location.position.Longitude);
         const marker = new window.google.maps.Marker({
           position,
-          map, // Assuming 'map' is your Google Map instance
+          map,
         });
-
-        newMarkers.push(marker);
-        if(locations === 0) bounds.extend(position);
+        bounds.extend(position);
+        return marker;
+      });
+  
+      // Remove previous markers from the map
+      markers.forEach(marker => marker.setMap(null));
+  
+      // Fit map to marker bounds if more than one location
+      if (locations.length > 1) {
+        map.fitBounds(bounds);
+      } else {
+        map.setCenter(bounds.getCenter()); // or use positions of the single location
+        map.setZoom(15); // Adjust zoom level for single marker
       }
-    });
-
-    if (bounds && !bounds.isEmpty()) {
-      map.fitBounds(bounds);
-    } else {
-      // Optionally, set a default position and zoom for the map
-      map.setCenter({lat: 57.14589702347154, lng: -2.113011357843587});
-      map.setZoom(7);
+  
+      setMarkers(newMarkers);
     }
-
-    // Update markers state with new markers
-    setMarkers(newMarkers);
-  }, [map, locations]);
+  }, [map, locations]); // Rerun when map or locations change
 
   return <div ref={mapRef} style={{ width: '100%', height: '100%' }} />;
 };
