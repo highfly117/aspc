@@ -40,7 +40,7 @@ function findGeographicCentroid(locations) {
 
 const WeatherMap = (props) => {
 
-  console.log(props)
+  
 
   const defaultIcon = new L.Icon({
     iconUrl: require('leaflet/dist/images/marker-icon.png'),
@@ -54,6 +54,7 @@ const WeatherMap = (props) => {
 
   const position = props.locations.length === 1 ? [props.locations[0].postition.Latitude, props.locations[0].postition.Longitude] :
     findGeographicCentroid(props.locations);
+  const zoomNum = props.locations.length === 100 ? 8.5 : (props.locations.length === 1 ? 14 : 12);
 
   const MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoiaGlnaGZseTExNyIsImEiOiJjbGluNWR4amUwbDk5M2txcjcybTRpbGo0In0.pdrbNFR2lyks_o2aQizU9Q';
   const MAPBOX_URL = `https://api.mapbox.com/styles/v1/mapbox/outdoors-v12/tiles/{z}/{x}/{y}?access_token=${MAPBOX_ACCESS_TOKEN}`;
@@ -67,13 +68,13 @@ const WeatherMap = (props) => {
         style={{ width: '100%', height: '100%' }}
         className="full-height-map"
         center={position}
-        zoom={19}
-        minZoom={19}
+        zoom={zoomNum}
+        minZoom={3}
         maxZoom={19}
         maxBounds={[[-85.06, -180], [85.06, 180]]}
         scrollWheelZoom={true}
       >
-        <ChangeView center={position} zoom={13} />
+        <ChangeView center={position} zoom={zoomNum} />
         <TileLayer
           attribution='&copy; <a href="https://www.mapbox.com/about/maps/">Mapbox</a>'
           url={MAPBOX_URL}

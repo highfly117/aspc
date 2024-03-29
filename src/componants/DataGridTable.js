@@ -24,6 +24,7 @@ const DataGridTable = ({
             {data.slice(0, 100).map((item, index) => (
                 <Propertybanner
                     key={item._id}
+                    propertyId={item._id}
                     imageUrl1={item.ImageLink}
                     imageUrl2={item.PhotoURLs}
                     priceType={item.Price.Type}

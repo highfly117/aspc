@@ -8,7 +8,7 @@ const DetailsPanel = ({
     MapLocations
 }) => {
 
-    console.log(MapLocations)
+   
 
     return (
 

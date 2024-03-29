@@ -109,3 +109,8 @@ p {
   margin-top: 3px;
   margin-bottom: 3px;
 }
+
+.Righttopsplit{
+  display: flex;
+  justify-content: space-between;
+}

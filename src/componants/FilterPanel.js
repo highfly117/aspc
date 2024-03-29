@@ -1,8 +1,9 @@
-import React from "react";
+import React, {useState} from "react";
 import { Button, Box, FormControl, InputLabel, Select, MenuItem, OutlinedInput, Chip, TextField } from '@mui/material';
 import ExclusiveSelection from './ExclusiveSelection'
 import PriceRangeSelector from "./PriceRangeSelector";
-
+import { useAuth0 } from "@auth0/auth0-react";
+import axios from "axios";
 
 const sortOptions = [
     { label: 'Most Recent', key: 'Recent' },
@@ -36,9 +37,34 @@ const FilterPanel = ({
     MenuProps,
     items }) => {
 
-    const [sortValue, setSortValue] = React.useState([]);
+    const [sortValue, setSortValue] = useState([]);
+    const [loginOpen, setLoginOpen] = useState(false);
+    const [signupOpen, setSignupOpen] = useState(false);
 
+    const { loginWithRedirect } = useAuth0();
 
+    const loginclick = async (event) => {
+        event.preventDefault();
+        loginWithRedirect()
+        const response =  axios.get(`${process.env.REACT_APP_API_URL_Properties}/protected`);
+        console.log(response)
+
+    }
+
+    const toggleLogin = () => {
+        setLoginOpen(prev => !prev)
+        console.log("login is " + loginOpen)
+      };
+      const toggleSignup = () => {
+        
+        setSignupOpen(prev => !prev)
+        console.log("signup is " + signupOpen)
+      };
+    
+      const handleSignUpClick = () => {
+        toggleLogin();  // close login modal
+        toggleSignup(); // open signup modal
+      };
 
 
 
@@ -72,7 +98,7 @@ const FilterPanel = ({
                         ))}
                     </Select>
                 </FormControl>
-                
+
 
                 <FormControl variant="outlined" className="formControl">
                     <InputLabel id="type-multiple-chip-label-Type" shrink={true}>Type</InputLabel>
@@ -156,6 +182,11 @@ const FilterPanel = ({
                 <ExclusiveSelection label="Bathrooms" onSelectionChange={handleExclusiveSelectionChange} />
 
                 <Button style={{ marginTop: "12px" }} onClick={handleApplyFilter} className="ApplyButton" variant="contained">Apply Filter</Button>
+
+                <div className='SignupWrapper' onClick={() => loginWithRedirect()}>
+                   
+                    <a>Sign Up / Login</a>
+                </div>
             </div>
             {/* <div className="row" style={{justifyContent:"flex-end", marginRight:"20px", marginTop:"10px"}}>
 
@@ -184,6 +215,9 @@ const FilterPanel = ({
             </FormControl>
 
             <div className="oftotal">{items} Results</div>
+
+
+            
         </div>
     )
 
