@@ -50,6 +50,7 @@
 
 .firstimage {
   border-top-left-radius: 8px;
+  max-width: 150px;
 }
 
 .Secondimage {}
@@ -120,7 +121,7 @@ p {
   background: #80cc3d;
   font-size: 18px;
   color: white;
-  width: 325px !important;
+  width: 316px !important;
   text-align: left;
   padding-left: 7px;
 }
