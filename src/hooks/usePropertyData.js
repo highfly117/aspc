@@ -18,11 +18,11 @@ export const usePropertyData = (url, transformPropertyData, filterParams, sortOp
                 params.set('sort', sortOption ); // This replaces any existing 'sort' parameter
                 const queryString = params.toString();
                 const fullUrl = `${url}?${queryString}`;
-                
+                console.log(fullUrl)
                 const response = await axios.get(fullUrl);
                 const transformedData = transformPropertyData(response.data.documents);
                 setData(transformedData);
-                setMapLocations(transformedData.slice(0,100));
+                setMapLocations(transformedData);
                 setCount(response.data.count)
             } catch (err) {
                 setError(err);

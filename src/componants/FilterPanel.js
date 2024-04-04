@@ -1,9 +1,13 @@
-import React, {useState} from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Box, FormControl, InputLabel, Select, MenuItem, OutlinedInput, Chip, TextField } from '@mui/material';
 import ExclusiveSelection from './ExclusiveSelection'
 import PriceRangeSelector from "./PriceRangeSelector";
+import SaveSearchModal from './SaveSearchModal';
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
+import { getProtectedResource } from "../utils/api";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { Margin } from "@mui/icons-material";
 
 const sortOptions = [
     { label: 'Most Recent', key: 'Recent' },
@@ -17,6 +21,9 @@ const sortOptions = [
 
 const FilterPanel = ({
     statusCategory,
+    Beds,
+    Baths,
+    priceRange,
     handleCategoryChange,
     typeCategory,
     handleTypeChange,
@@ -26,6 +33,7 @@ const FilterPanel = ({
     FloorArea,
     handleAreaChange,
     handleExclusiveSelectionChange,
+    handlebathChange,
     handleApplyFilter,
     handleSortChange,
     sortOption,
@@ -35,43 +43,33 @@ const FilterPanel = ({
     ITEM_HEIGHT,
     ITEM_PADDING_TOP,
     MenuProps,
+    handleSaveSearch,
     items }) => {
 
-    const [sortValue, setSortValue] = useState([]);
+
     const [loginOpen, setLoginOpen] = useState(false);
     const [signupOpen, setSignupOpen] = useState(false);
-
     const { loginWithRedirect } = useAuth0();
+    const [modalOpen, setModalOpen] = useState(false);
 
     const loginclick = async (event) => {
         event.preventDefault();
         loginWithRedirect()
-        const response =  axios.get(`${process.env.REACT_APP_API_URL_Properties}/protected`);
-        console.log(response)
-
     }
 
     const toggleLogin = () => {
         setLoginOpen(prev => !prev)
         console.log("login is " + loginOpen)
-      };
-      const toggleSignup = () => {
-        
+    };
+    const toggleSignup = () => {
+
         setSignupOpen(prev => !prev)
         console.log("signup is " + signupOpen)
-      };
-    
-      const handleSignUpClick = () => {
-        toggleLogin();  // close login modal
-        toggleSignup(); // open signup modal
-      };
-
-
+    };
 
     return (
-
         <div className="filterPanel">
-            <div className="row" style={{ justifyContent: "space-around" }}>
+            <div className="row" style={{ justifyContent: "center" }}>
                 <FormControl variant="outlined" className="formControl">
                     <InputLabel id="show-multiple-chip-label-show" shrink={true}>Show</InputLabel>
                     <Select
@@ -179,13 +177,19 @@ const FilterPanel = ({
 
                 <ExclusiveSelection label="Beds" onSelectionChange={handleExclusiveSelectionChange} />
 
-                <ExclusiveSelection label="Bathrooms" onSelectionChange={handleExclusiveSelectionChange} />
+                <ExclusiveSelection label="Bathrooms" onSelectionChange={handlebathChange} />
+                <div className="buttonGroup">        
+                <Button style={{ marginTop: "0px" }} onClick={handleApplyFilter} className="ApplyButton" variant="contained">Apply Filter</Button>
+                <Button style={{ marginTop: "0px", backgroundColor:"#bbdabb" }} onClick={() => setModalOpen(true)} className="SaveSearchButton" variant="contained">Save Search</Button>
+                <SaveSearchModal 
+                        handleSaveSearch={handleSaveSearch}
+                        isOpen={modalOpen}
+                        onClose={() => setModalOpen(false)} />
+                </div>
+                <div  className='SignupWrapper' onClick={loginclick}>
 
-                <Button style={{ marginTop: "12px" }} onClick={handleApplyFilter} className="ApplyButton" variant="contained">Apply Filter</Button>
-
-                <div className='SignupWrapper' onClick={() => loginWithRedirect()}>
-                   
-                    <a>Sign Up / Login</a>
+                    <AccountCircleIcon style={{color:"#1976d2", fontSize:"2.15rem"}} /> {/* Icon component */}
+                    <span style={{marginLeft:"10px", fontWeight:"600"}}>My Account</span> {/* Text next to icon */}
                 </div>
             </div>
             {/* <div className="row" style={{justifyContent:"flex-end", marginRight:"20px", marginTop:"10px"}}>
@@ -217,7 +221,7 @@ const FilterPanel = ({
             <div className="oftotal">{items} Results</div>
 
 
-            
+
         </div>
     )
 

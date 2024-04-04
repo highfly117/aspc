@@ -16,7 +16,7 @@ export const useLocationData = () => {
                 
                 const fetchedLocations = response.data.flatMap(doc =>
                     Object.values(doc.Areas).map(areaName => ({
-                        value: `Area${areaCounter++}`, // Increment counter for each area
+                        value: areaName, // Increment counter for each area
                         label: areaName
                     }))
                 );

@@ -22,8 +22,17 @@ const ExclusiveSelection = ({ label, onSelectionChange }) => {
     };
 
     return (
-        <Box sx={{ display: 'flex', alignItems: 'center', marginLeft: 0, height:40,marginTop:"12px" }}>
-            <Typography variant="subtitle2" component="div">
+        <Box sx={{ 
+            display: 'flex',
+             alignItems: 'center',
+              marginLeft: 0,
+               height:40,
+               flexDirection:"column",
+               alignItems:"flex-start",
+               position:"relative",
+               top:"-18px"
+               }}>
+            <Typography sx={{scale:"0.75",fontSize:"1rem"}} variant="subtitle2" component="div">
                 {label}
             </Typography>
             <ToggleButtonGroup
@@ -42,7 +51,7 @@ const ExclusiveSelection = ({ label, onSelectionChange }) => {
                 <FormControlLabel
                     control={<Checkbox checked={checked} onChange={handleCheckboxChange} />}
                     label={`${selectedValue} or more`}
-                    sx={{ marginLeft: 'auto', marginRight: 0 }} // This moves the checkbox to the end of the container.
+                    sx={{ marginLeft: 0, marginRight: 0, position:"relative", top:"-8px" }} // This moves the checkbox to the end of the container.
                 />
             )}
         </Box>

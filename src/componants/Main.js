@@ -7,6 +7,10 @@ import { usePropertyData } from '../hooks/usePropertyData';
 import { useLocationData } from '../hooks/useLocationData';
 import { useTypeData } from '../hooks/useTypeData';
 import { useStatusData } from '../hooks/useStatusData';
+import { useNew } from "../hooks/useNew";
+import { useSaveSearch } from "../hooks/useSaveSearch"
+import { event } from "jquery";
+import { useAuth0 } from "@auth0/auth0-react";
 
 
 
@@ -20,11 +24,17 @@ const Main = () => {
     const [priceRange, setPriceRange] = useState({ minPrice: '', maxPrice: '' });
     const [rowSelectionModel, setRowSelectionModel] = useState('');
     const [FloorArea, setFloorArea] = useState('')
+    const [Beds, SetBeds] = useState('')
+    const [Baths, Setbaths] = useState('')
     const [ignoreSelectionChange, setIgnoreSelectionChange] = useState(false);
     const [filterParams, setFilterParams] = useState({});
+    const [SavefilterParams, setSaveFilterParams] = useState({});
     const [sortOption, setSortOption] = useState('Recent');
     const [selectedItem, setSelectedItem] = useState(null);
-    
+
+
+
+    const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
 
     const ITEM_HEIGHT = 48;
     const ITEM_PADDING_TOP = 8;
@@ -38,7 +48,7 @@ const Main = () => {
         },
     }), [ITEM_HEIGHT, ITEM_PADDING_TOP]);
 
-    
+
 
     const columns = [
         {
@@ -115,18 +125,25 @@ const Main = () => {
         }));
     }, []);
 
-    const { data, MapLocations, count, loading, error } = usePropertyData(propertyDataUrl, transformPropertyData, filterParams, sortOption );
+
+
+
+
+    const { data, MapLocations, count, loading, error } = usePropertyData(propertyDataUrl, transformPropertyData, filterParams, sortOption);
     const { locations, locationloading, locationerror } = useLocationData();
     const { types, typeloading, typeerror } = useTypeData();
     const { status, Statusloading, statuserror } = useStatusData();
+    const { New, Newloading, Newerror } = useNew(transformPropertyData);
+    const { SaveSearch, saveSearcherror } = useSaveSearch(SavefilterParams);
+
+
+
+
 
     const updateMapLocations = useCallback((selectedItem) => {
-      
-        
         setSelectedItem(selectedItem);
         console.log(selectedItem)
-        
-    },[]);
+    }, []);
 
     const locationsForDetailsPanel = useMemo(() => {
         // If an item is selected, create an array with just that item's location
@@ -141,6 +158,8 @@ const Main = () => {
     const handleAreaChange = (event) => { setFloorArea(event.target.value); };
     const handleTypeChange = (event) => { setTypeCategory(event.target.value); };
     const handleSortChange = (event) => { setSortOption(event.target.value); };
+    const handleBedChange = (event) => { SetBeds(event) }
+    const handlebathChange = (event) => { Setbaths(event) }
 
     const handleLocationChange = (event) => {
         const newValue = typeof event.target.value === 'string' ? event.target.value.split(',') : event.target.value;
@@ -153,6 +172,37 @@ const Main = () => {
         setPriceRange({ minPrice, maxPrice });
         // Now, priceRange in Main has the updated values. You can use them as needed.
     };
+
+
+    const handleSaveSearch = useCallback((searchName) => {
+        const selectedLocationLabels = locationCategory.map(value => {
+            const location = locations.find(loc => loc.value === value);
+            return location ? `locations=${encodeURIComponent(location.label)}` : '';
+        }).join('&');
+
+        const selectedShowParams = statusCategory.map(value => {
+            const category = status.find(cat => cat.value === value);
+            return category ? `show=${encodeURIComponent(category.label)}` : '';
+        }).join('&');
+
+        const selectedTypeParams = typeCategory.map(value => {
+            const type = types.find(ty => ty.value === value);
+            return type ? `type=${encodeURIComponent(type.label)}` : '';
+        }).join('&');
+
+
+        const priceRangeParams = `minPrice=${priceRange.minPrice}&maxPrice=${priceRange.maxPrice}`;
+        const minAreaParams = `minArea=${FloorArea}`
+        const bedsParams = `beds=${Beds}`
+        const bathParams = `baths=${Baths}`
+        const SaveName = `Name=${searchName}`
+        const queryParams = `${selectedLocationLabels}&${selectedShowParams}&${selectedTypeParams}&${priceRangeParams}&${minAreaParams}&${bedsParams}&${bathParams}&${SaveName}`;
+
+        setSaveFilterParams(queryParams); // Update filter parameters state
+
+
+
+    }, [locationCategory, statusCategory, typeCategory, priceRange.minPrice, priceRange.maxPrice, FloorArea, locations, Categorys, Baths, Beds, Types])
 
     const handleApplyFilter = useCallback(() => {
         const selectedLocationLabels = locationCategory.map(value => {
@@ -173,13 +223,48 @@ const Main = () => {
 
         const priceRangeParams = `minPrice=${priceRange.minPrice}&maxPrice=${priceRange.maxPrice}`;
         const minAreaParams = `minArea=${FloorArea}`
-        const queryParams = `${selectedLocationLabels}&${selectedShowParams}&${selectedTypeParams}&${priceRangeParams}&${minAreaParams}`;
+        const bedsParams = `beds=${Beds}`
+        const bathParams = `baths=${Baths}`
+        const queryParams = `${selectedLocationLabels}&${selectedShowParams}&${selectedTypeParams}&${priceRangeParams}&${minAreaParams}&${bedsParams}&${bathParams}`;
 
         setFilterParams(queryParams); // Update filter parameters state
         setIgnoreSelectionChange(true);
 
-    }, [locationCategory, statusCategory, typeCategory, priceRange.minPrice, priceRange.maxPrice, FloorArea, locations, Categorys, Types])
+    }, [locationCategory, statusCategory, typeCategory, priceRange.minPrice, priceRange.maxPrice, FloorArea, locations, Categorys, Baths, Beds, Types])
 
+
+    const handlesearchchange = (search) => {
+        console.log(search);
+    
+        // Handling locations
+        const locations = search.searchParams.locations || [];
+        const newValue = Array.isArray(locations) ? locations : locations.split(',');
+        setLocationCategory(newValue);
+    
+        // Handling minPrice and maxPrice
+        const minPrice = search.searchParams.minPrice ? search.searchParams.minPrice.toString() : '';
+        const maxPrice = search.searchParams.maxPrice ? search.searchParams.maxPrice.toString() : '';
+        setPriceRange({ minPrice, maxPrice });
+    
+        // Handling show, type, beds, and baths
+        setStatusCategory(search.searchParams.show || []);
+        setTypeCategory(search.searchParams.type || []);
+        setFloorArea(search.searchParams.minArea || '');
+        SetBeds(search.searchParams.beds ? search.searchParams.beds.toString() : '');
+        Setbaths(search.searchParams.baths ? search.searchParams.baths.toString() : '');
+    
+        // Log to see what's being set
+        console.log(locationCategory, priceRange, statusCategory, FloorArea, typeCategory, Beds, Baths);
+    
+        // Call handleApplyFilter to apply the new filters
+        
+    };
+
+    useEffect(() => {
+        if (locationCategory.length > 0 || priceRange.minPrice || priceRange.maxPrice) {
+            handleApplyFilter();
+        }
+    }, [locationCategory, priceRange, statusCategory, FloorArea, typeCategory, Beds, Baths]);
 
     useEffect(() => { const propertyDataUrl = `${process.env.REACT_APP_API_URL_Properties}/datafilter` }, [filterParams]); // React to changes in filterParams
 
@@ -191,17 +276,24 @@ const Main = () => {
 
                     <FilterPanel
                         statusCategory={statusCategory}
-                        handleCategoryChange={handleCategoryChange}
                         typeCategory={typeCategory}
-                        handleTypeChange={handleTypeChange}
                         locationCategory={locationCategory}
+                        priceRange={priceRange}
+                        FloorArea={FloorArea}
+                        Beds={Beds}
+                        Baths={Baths}
+                        sortOption={sortOption}
+                        handleSaveSearch={handleSaveSearch}
+                        handleCategoryChange={handleCategoryChange}
+                        handleTypeChange={handleTypeChange}
                         handleLocationChange={handleLocationChange}
                         handlePriceChange={handlePriceChange}
-                        FloorArea={FloorArea}
                         handleAreaChange={handleAreaChange}
+                        handleExclusiveSelectionChange={handleBedChange}
+                        handlebathChange={handlebathChange}
                         handleApplyFilter={handleApplyFilter}
                         handleSortChange={handleSortChange}
-                        sortOption={sortOption}
+
                         Categorys={status}
                         Types={types}
                         locations={locations}
@@ -218,12 +310,15 @@ const Main = () => {
                         setRowSelectionModel={setRowSelectionModel}
                         ignoreSelectionChange={ignoreSelectionChange}
                         setMapLocations={MapLocations}
-                        
+
                     ></DataGridTable>
 
                     <DetailsPanel
                         data={data}
                         MapLocations={locationsForDetailsPanel}
+                        NewProperties={New}
+                        transformPropertyData={transformPropertyData}
+                        handlesearchchange={handlesearchchange}
                     ></DetailsPanel>
 
                 </div>

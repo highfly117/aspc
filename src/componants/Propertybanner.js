@@ -1,14 +1,17 @@
 import React from "react";
 import { useAuth0 } from '@auth0/auth0-react';
 import axios from "axios";
+import { getProtectedResource } from "../utils/api";
 
 const Propertybanner = ({
     propertyId,
+    Profile,
     imageUrl1,
     imageUrl2,
     priceType,
     price,
     size,
+    Status,
     pricePerMeter,
     address,
     description,
@@ -18,36 +21,30 @@ const Propertybanner = ({
     onClick // Use only onClick here
 }) => {
 
-    const { isAuthenticated, getAccessTokenSilently } = useAuth0();
+    const { getAccessTokenSilently } = useAuth0();
 
     const handleSave = async (event) => {
-        event.stopPropagation(); // Prevent onClick from being called when the button is clicked
-
-        if (!isAuthenticated) {
-            console.log("User is not authenticated.");
-            return;
-        }
-
+        
         try {
-            const token = await getAccessTokenSilently();
-            console.log(token)
-            const response = await axios.post(`http://localhost:5000/api/v1/Properties/${propertyId}/like`, {}, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
+            const accessToken = await getAccessTokenSilently();
+            const { data, error } = await getProtectedResource(accessToken, propertyId, Profile);
 
-            console.log("Property saved successfully", response.data);
+            console.log("Property saved successfully", data);
         } catch (error) {
             console.error("Error saving property", error);
         }
     };
+
+    
+
+    
 
     // Directly use onClick provided by parent component for click handler
     return (
         <div onClick={onClick} style={{ cursor: "pointer" }} className={isActive ? "propertybanner active" : "propertybanner"}>
             <div className="leftsplit">
                 <div className="lefttopsplit">
+                    <div className="PropertyStatus">{Status.Type === "None" ? "" : Status.Type }</div>
                     {imageUrl1 && <img className="firstimage" alt="house 1" src={imageUrl1 + "?width=149&quality=85&autorotate=true&quot"} />}
                     {imageUrl2?.[1] && <img className="secondimage" alt="House 2" src={imageUrl2[1] + "?width=149&quality=85&autorotate=true&quot"} />}
                 </div>

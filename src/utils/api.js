@@ -24,3 +24,32 @@ export const fetchStatus = async () => {
     const response = await axios.get(`${BASE_URL}/status`);
     return response;
 };
+
+export const getProtectedResource = async (accessToken, propertyId, Profile) => {
+    const config = {
+        url: `${BASE_URL}/${propertyId}/like`,
+        method: "POST",
+        headers: {
+            "content-type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
+        },
+        data: JSON.stringify(Profile)
+    };
+
+    const response = await axios(config);
+    return response;
+};
+export const getProtectedResource2 = async (accessToken, user) => {
+    const config = {
+        url: `${BASE_URL}/${user.email}/Favorites`,
+        method: "GET",
+        headers: {
+            "content-type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
+        }
+    };
+
+    const response = await axios(config);
+    return response;
+};
+
