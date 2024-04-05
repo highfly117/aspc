@@ -81,6 +81,9 @@ h2 {
 h3 {
   margin-top: auto;
   margin-bottom: auto;
+  font-size: 15px;
+  font-weight: 800;
+  color: rgb(80,80, 80);
 }
 
 h4 {
@@ -102,8 +105,18 @@ h5 {
   margin-bottom: 6px;
   font-weight: 800;
   color: purple;
+}
 
-
+.sqm2 {
+  border: 3px solid #1287a8;
+  border-radius: 12px;
+  padding: 10px;
+  font-size: 13px;
+  margin: 0px;
+  margin-bottom: 6px;
+  font-weight: 800;
+  color: #1287a8;
+  margin-left: 35px;
 }
 
 p {
@@ -124,4 +137,27 @@ p {
   width: 316px !important;
   text-align: left;
   padding-left: 7px;
+}
+
+.PropertyClass{
+  width:32px;
+  margin-Top:5px;
+  margin-Right:25px
+}
+
+.roomnumbers{
+  width: 32px;
+    margin-Top: 5px;
+    margin-left: 20px;
+    margin-right: 12px;
+}
+
+.min-widthclass{
+  min-width: 450px;
+}
+
+.spacer{
+  margin-right: 10px;
+  font-size: 15px;
+  font-weight: 800;
 }

@@ -10,6 +10,8 @@ const DataGridTable = ({
     const [activeBanner, setActiveBanner] = useState(null);
     const {user} = useAuth0();
 
+    console.log(data)
+
     const handleBannerClick = (id, item) => {
         const isSelectedBannerBeingDeactivated = activeBanner === id;
         console.log(isSelectedBannerBeingDeactivated);
@@ -39,6 +41,10 @@ const DataGridTable = ({
                     pricePerMeter={`£${(item.Price.Value / item.Space).toFixed(0)}/m2`}
                     address={item.Address}
                     description={`Semi Detached - ${item.Bedrooms} Bed - ${item.Bathrooms} Bath - ${item.Sittingrooms} Sitting`}
+                    Type={item.Type}
+                    Bathrooms={item.Bathrooms}
+                    Bedrooms={item.Bedrooms}
+                    Sittingrooms={item.Sittingrooms}
                     addedDate={item.TimeStamp.slice(0, 10)}
                     viewLink={item.URL}
                     isActive={activeBanner === index}

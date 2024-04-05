@@ -15,6 +15,10 @@ const Propertybanner = ({
     pricePerMeter,
     address,
     description,
+    Type,
+    Bathrooms,
+    Bedrooms,
+    Sittingrooms,
     addedDate,
     viewLink,
     isActive,
@@ -22,9 +26,29 @@ const Propertybanner = ({
 }) => {
 
     const { getAccessTokenSilently } = useAuth0();
+    let imgSrc;
+    const bedSrc = require('../Assets/double-bed.png');
+    const toiletSrc = require('../Assets/toilet.png')
+    const sofaSrc = require('../Assets/seater-sofa.png')
+    switch (Type) {
+        case 'flat':
+          imgSrc = require('../Assets/apartments.png');
+          break;
+        case 'semi-detached':
+          imgSrc = require('../Assets/townhouse.png'); // Update path accordingly
+          break;
+        case 'terrace':
+          imgSrc = require('../Assets/terrace.png'); // Update path accordingly
+          break;
+        case 'house':
+          imgSrc = require('../Assets/house1.png');
+          break;
+        default:
+          imgSrc = 'path/to/default-image.png'; // Fallback image path
+      }
 
     const handleSave = async (event) => {
-        
+
         try {
             const accessToken = await getAccessTokenSilently();
             const { data, error } = await getProtectedResource(accessToken, propertyId, Profile);
@@ -35,38 +59,47 @@ const Propertybanner = ({
         }
     };
 
-    
 
     
+
 
     // Directly use onClick provided by parent component for click handler
     return (
         <div onClick={onClick} style={{ cursor: "pointer" }} className={isActive ? "propertybanner active" : "propertybanner"}>
             <div className="leftsplit">
                 <div className="lefttopsplit">
-                    <div className="PropertyStatus">{Status.Type === "None" ? "" : Status.Type }</div>
+                    <div className="PropertyStatus">{Status.Type === "None" ? "" : Status.Type}</div>
                     {imageUrl1 && <img className="firstimage" alt="house 1" src={imageUrl1 + "?width=149&quality=85&autorotate=true&quot"} />}
                     {imageUrl2?.[1] && <img className="secondimage" alt="House 2" src={imageUrl2[1] + "?width=149&quality=85&autorotate=true&quot"} />}
                 </div>
                 <div className="leftbottomsplit">
                     <h3>{priceType} {price}</h3>
-                    <h5>{size} - {pricePerMeter}</h5>
+                    
                 </div>
             </div>
             <div className="Rightsplit">
                 <div className="Righttopsplit">
                     <div className="Righttopleft">
-                        <h4>{address}</h4>
-                        <p>{description}</p>
+                        <h4 className="min-widthclass">{address}</h4>
+                        <div style={{display:"flex", alignItems:"end"}}>
+                            <img className="PropertyClass" src={imgSrc} alt={Type}></img> 
+                            <img className="roomnumbers"  src={bedSrc} alt={Bedrooms}></img>
+                            <p className="spacer">{Bedrooms}</p>
+                            <img className="roomnumbers" src={toiletSrc} alt={Bathrooms}></img>
+                            <p className="spacer">{Bathrooms}</p>
+                            <img className="roomnumbers"  src={sofaSrc} alt={Sittingrooms}></img> 
+                            <p className="spacer">{Sittingrooms}</p>
+                        </div>
                     </div>
                     <div className="RighttopRight">
                         <button onClick={handleSave}>Save</button>
                     </div>
 
                 </div>
-                <div className="RightbottomSplit" style={{ display: "flex", justifyContent: "space-between", alignItems: "end" }}>
+                <div className="RightbottomSplit" style={{ display: "flex", alignItems: "end" }}>
                     <p className="addon">Added on {addedDate}</p>
-                    <a style={{ marginTop: "auto", marginBottom: "5px" }} href={viewLink} target="_blank" rel="noopener noreferrer">View</a>
+                    <p className="sqm2">{size} - {pricePerMeter}</p>
+                    <a style={{ marginTop: "auto", marginBottom: "5px", position:"absolute", right:"50px" }} href={viewLink} target="_blank" rel="noopener noreferrer">View</a>
                 </div>
             </div>
         </div>
