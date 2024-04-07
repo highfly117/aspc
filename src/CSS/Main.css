@@ -1,44 +1,60 @@
 .Main {
-    overflow-y: hidden;
-    
+  overflow-y: hidden;
+
 }
 
 .MainPanel {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    top: 0px;
-    left: 0px;
-    justify-content: center;
-    background-color: #e9e9eb;
-    display: flex;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+  justify-content: center;
+  display: flex;
+  background: linear-gradient(90deg, #74EBD5 0%, #9FACE6 100%);
+  background-size : 200% 200%;
+  animation : gradient 25s ease infinite;
+    }
+      
+@keyframes gradient {
+  0% {
+      background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+
+  
 }
 
-.inputPanel{
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    max-width: 1930px;
-    
+.inputPanel {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 1930px;
+
 }
 
-.detailsPanel{
-    
-    width: 30%;
-    overflow-y: auto;
-    margin-left: 0;
-    height: 100%;
-    position: relative;
-    top: 90px;
-    height: calc(100% - 90px);
-    border-left: 1px solid lightgray !important;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 5px;
-    background:  #fff !important;
+.detailsPanel {
+
+  width: 30%;
+  overflow-y: auto;
+  margin-left: 0;
+  height: 100%;
+  position: relative;
+  top: 90px;
+  height: calc(100% - 90px);
+  border-left: 1px solid lightgray !important;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  background: #fff !important;
 }
 
-.dataTable{
+.dataTable {
   width: 50%;
   margin-right: 30px;
   position: relative;
@@ -50,214 +66,222 @@
 
 
 table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  th, td {
-    text-align: left;
-    padding: 8px;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  tr:nth-child(even) {background-color: #f2f2f2;}
-  
-  .filterPanel{
-    width: 100%;
-    position: absolute;
-    top: 0px;
-    height: 90px;
-    z-index: 2;
-    background-color: rgb(255, 255, 255);
-    padding-top: 15px;
-    background: #fff !important;
-    border-radius: 3px !important;
-    border-bottom: 3px solid rgb(25, 118, 210) !important;
-    box-shadow: 0 1px 1px rgba(0,0,0,.1) !important;
-    margin-bottom: 20px !important;
-    
-
-    
+  width: 100%;
+  border-collapse: collapse;
 }
 
-.Mapbox{
-    border-radius: 5px;
-    width: 100%;
-    height: 50%;
-    background-color: rgb(255, 255, 255);
-    
-    
-    border-radius: 5px !important;
-    border-bottom: 3px solid rgb(25, 118, 210) !important;
-    box-shadow: 0 1px 1px rgba(0,0,0,.1) !important;
-    
+th,
+td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
 }
 
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.filterPanel {
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  height: 90px;
+  z-index: 2;
+  background-color: rgb(255, 255, 255);
+  padding-top: 15px;
+  background: #fff !important;
+  border-radius: 3px !important;
+  border-bottom: 3px solid rgb(25, 118, 210) !important;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .1) !important;
+  margin-bottom: 20px !important;
 
 
-
-.formControl{
-    width:225px !important;
-    margin-left: 30px !important;
-    
-    
 
 }
 
-.formControl2{
-  width:300px !important;
+.Mapbox {
+  border-radius: 5px;
+  width: 100%;
+  height: 50%;
+  background-color: rgb(255, 255, 255);
+
+
+  border-radius: 5px !important;
+  border-bottom: 3px solid rgb(25, 118, 210) !important;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .1) !important;
+
+}
+
+
+
+
+.formControl {
+  width: 225px !important;
+  margin-left: 30px !important;
+
+
+
+}
+
+.formControl2 {
+  width: 300px !important;
   margin-left: 30px !important;
 }
 
-.formControl3{
-  width:115px !important;
+.formControl3 {
+  width: 115px !important;
   margin-left: 25px !important;
 }
 
-.css-bghv3y-MuiToggleButtonGroup-root{
-    height: 40px !important;
-    margin-left: 10px !important;
-}
-
-
-.css-mvfcsz{
+.css-bghv3y-MuiToggleButtonGroup-root {
+  height: 40px !important;
   margin-left: 10px !important;
 }
 
-.row{
-    display: flex;
-    margin-bottom: 10px;
-  }
 
-  .ApplyButton{
-    height: 35px;
-    margin-left: 20px !important;
-  }
+.css-mvfcsz {
+  margin-left: 10px !important;
+}
 
-  .SaveSearchButton{
-    height: 35px;
-    margin-left: 20px !important;
-    padding: 6px !important;
-    margin-top: 3px !important;
-  }
+.row {
+  display: flex;
+  margin-bottom: 10px;
+}
 
-  .price-range-selector-container{
-    width: auto !important;
-    margin-left: 4px !important;
-    justify-content: center;
-  }
+.ApplyButton {
+  height: 35px;
+  margin-left: 20px !important;
+}
 
-  .price-range-text-field{
-    width: 125px !important;
-  }
+.SaveSearchButton {
+  height: 35px;
+  margin-left: 20px !important;
+  padding: 6px !important;
+  margin-top: 3px !important;
+}
 
-  .price-range-field-container{
-    flex-basis: auto !important;
-  }
+.price-range-selector-container {
+  width: auto !important;
+  margin-left: 4px !important;
+  justify-content: center;
+}
 
-  .leaflet-popup-content{
-    width: 300px !important;
-    height: 160px !important;
-  }
+.price-range-text-field {
+  width: 125px !important;
+}
 
-  .MuiSelect-select {
-    height: 25px !important;
-    padding-top: 15px !important;
-  } 
+.price-range-field-container {
+  flex-basis: auto !important;
+}
 
-  h1{
-    margin-top: 0px;
-    margin-bottom: 10px;
-  }
+.leaflet-popup-content {
+  width: 300px !important;
+  height: 160px !important;
+}
 
-  h2{
-    margin-top: 0px;
-    margin-bottom: 10px;
-  }
-  h3{
-    margin-top: 0px;
-    margin-bottom: 10px;
-  }
-  h4{
-    margin-top: 0px;
-    margin-bottom: 10px;
-  }
-  h5{
-    margin-top: 0px;
-    margin-bottom: 10px;
-  }
+.MuiSelect-select {
+  height: 25px !important;
+  padding-top: 15px !important;
+}
 
-  .rowUnderOffer {
-    border-top: 5px solid rgb(128, 204, 61) !important;
-    
-  }
-  .rowClosing {
-    border-top: 5px solid rgb(204, 61, 128) !important;
-    
-  }
-  .rowSold {
-    border-top: 5px solid rgb(0, 0, 0) !important;
-    -webkit-filter: grayscale(1);
-    filter: grayscale(1);
-   
-  }
+h1 {
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
 
-  .MuiDataGrid-withBorderColor{
-    min-height: 100px !important;
-    
-  }
+h2 {
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
 
-  .noLeftPadding {
-    padding-left: 0 !important;
-  }
+h3 {
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
 
-  .MuiDataGrid-root .MuiDataGrid-cell {
-    white-space: normal !important;
-    word-wrap: break-word !important;
-    text-align: left;
-  }
+h4 {
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
 
-  .Sort-Dropdown{
-    position: absolute !important;
-    top: 95px;
-    left: 10px;
-    background: white;
-    width: 147px !important;
+h5 {
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
 
-  }
+.rowUnderOffer {
+  border-top: 5px solid rgb(128, 204, 61) !important;
 
-  .oftotal{
-    position: absolute !important;
-    top: 175px;
-    left: 10px;
-    background-color: white;
-    width: 147px !important;
-    font-weight: 400;
-    margin: 8px;
-    font-size: 20px;
-    padding: 8px;
-    border-radius: 4px;
-    box-shadow: 0 3px 3px -3px rgba(0,0,0,.3);
-  }
+}
 
-  .SignupWrapper{
-    display: flex;
-    align-items: center;
-    position: relative;
-    top: -2px;
-    margin-left: 25px;
-    border: 3px solid rgb(25, 118, 210);
-    border-radius: 7px;
-    padding-left: 6px;
-    padding-right: 13px;
-    padding-top: 0px;
-    padding-bottom: 0px;
-    height: 60px;
-  }
+.rowClosing {
+  border-top: 5px solid rgb(204, 61, 128) !important;
 
-  .buttonGroup{
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    top: -8px;
-  }
+}
+
+.rowSold {
+  border-top: 5px solid rgb(0, 0, 0) !important;
+  -webkit-filter: grayscale(1);
+  filter: grayscale(1);
+
+}
+
+.MuiDataGrid-withBorderColor {
+  min-height: 100px !important;
+
+}
+
+.noLeftPadding {
+  padding-left: 0 !important;
+}
+
+.MuiDataGrid-root .MuiDataGrid-cell {
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  text-align: left;
+}
+
+.Sort-Dropdown {
+  position: absolute !important;
+  top: 95px;
+  left: 10px;
+  background: white;
+  width: 147px !important;
+
+}
+
+.oftotal {
+  position: absolute !important;
+  top: 175px;
+  left: 10px;
+  background-color: white;
+  width: 147px !important;
+  font-weight: 400;
+  margin: 8px;
+  font-size: 20px;
+  padding: 8px;
+  border-radius: 4px;
+  box-shadow: 0 3px 3px -3px rgba(0, 0, 0, .3);
+}
+
+.SignupWrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+  top: -2px;
+  margin-left: 25px;
+  border: 3px solid rgb(25, 118, 210);
+  border-radius: 7px;
+  padding-left: 6px;
+  padding-right: 13px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  height: 60px;
+}
+
+.buttonGroup {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: -8px;
+}

@@ -8,6 +8,7 @@ import axios from "axios";
 import { getProtectedResource } from "../utils/api";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { Margin } from "@mui/icons-material";
+import logo from "../Assets/ASPC logo.png"
 
 const sortOptions = [
     { label: 'Most Recent', key: 'Recent' },
@@ -70,6 +71,8 @@ const FilterPanel = ({
     return (
         <div className="filterPanel">
             <div className="row" style={{ justifyContent: "center" }}>
+                <img src={logo} style={{width:"80px", height:"auto", position:"absolute", top:"3px", left:"44px"}}></img>
+                <h1 style={{position:"absolute", top:"0px", left:"144px", fontSize:"55px", fontWeight:"800"}}>ASPC</h1>
                 <FormControl variant="outlined" className="formControl">
                     <InputLabel id="show-multiple-chip-label-show" shrink={true}>Show</InputLabel>
                     <Select

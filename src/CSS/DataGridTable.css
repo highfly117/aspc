@@ -14,7 +14,7 @@
 }
 
 .propertybanner.active {
-  background-color: rgba(167, 199, 231, 0.3) !important;
+  background-color: rgba(187, 218, 187, 1) !important;
 }
 
 .Rightsplit {
@@ -69,8 +69,9 @@
 }
 
 h1 {
-  margin-top: 0px;
+  margin-top: 0cqmax;
   margin-bottom: 0px;
+  color: #1979e6;
 }
 
 h2 {
