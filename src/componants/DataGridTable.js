@@ -26,7 +26,7 @@ const DataGridTable = ({
     
 
     return (
-        <div style={{ width: "50%", marginRight: "-19px" }} className="dataTable">
+        <div  className="dataTable">
             {data.map((item, index) => (
                 <Propertybanner
                     key={item._id}
