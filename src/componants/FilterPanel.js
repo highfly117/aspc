@@ -71,8 +71,8 @@ const FilterPanel = ({
     return (
         <div className="filterPanel">
             <div className="row" style={{ justifyContent: "center" }}>
-                <img src={logo} style={{width:"80px", height:"auto", position:"absolute", top:"3px", left:"44px"}}></img>
-                <h1 style={{position:"absolute", top:"0px", left:"144px", fontSize:"55px", fontWeight:"800"}}>ASPC</h1>
+                <img className="ASPCimg" src={logo}></img>
+                <h1 className="ASPCtext" >ASPC</h1>
                 <FormControl variant="outlined" className="formControl">
                     <InputLabel id="show-multiple-chip-label-show" shrink={true}>Show</InputLabel>
                     <Select
@@ -192,7 +192,7 @@ const FilterPanel = ({
                 <div  className='SignupWrapper' onClick={loginclick}>
 
                     <AccountCircleIcon style={{color:"#1976d2", fontSize:"2.15rem"}} /> {/* Icon component */}
-                    <span style={{marginLeft:"10px", fontWeight:"600"}}>My Account</span> {/* Text next to icon */}
+                    <span className="myAccountText" >My Account</span> {/* Text next to icon */}
                 </div>
             </div>
             {/* <div className="row" style={{justifyContent:"flex-end", marginRight:"20px", marginTop:"10px"}}>

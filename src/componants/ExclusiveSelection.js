@@ -25,7 +25,7 @@ const ExclusiveSelection = ({ label, onSelectionChange }) => {
         <Box sx={{ 
             display: 'flex',
              alignItems: 'center',
-              marginLeft: 0,
+              marginLeft: 1.5,
                height:40,
                flexDirection:"column",
                alignItems:"flex-start",
