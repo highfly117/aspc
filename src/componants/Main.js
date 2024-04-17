@@ -11,7 +11,7 @@ import { useNew } from "../hooks/useNew";
 import { useSaveSearch } from "../hooks/useSaveSearch"
 import { event } from "jquery";
 import { useAuth0 } from "@auth0/auth0-react";
-
+import { FormControl, InputLabel, Select, OutlinedInput } from '@mui/material';
 
 
 
@@ -236,29 +236,29 @@ const Main = () => {
 
     const handlesearchchange = (search) => {
         console.log(search);
-    
+
         // Handling locations
         const locations = search.searchParams.locations || [];
         const newValue = Array.isArray(locations) ? locations : locations.split(',');
         setLocationCategory(newValue);
-    
+
         // Handling minPrice and maxPrice
         const minPrice = search.searchParams.minPrice ? search.searchParams.minPrice.toString() : '';
         const maxPrice = search.searchParams.maxPrice ? search.searchParams.maxPrice.toString() : '';
         setPriceRange({ minPrice, maxPrice });
-    
+
         // Handling show, type, beds, and baths
         setStatusCategory(search.searchParams.show || []);
         setTypeCategory(search.searchParams.type || []);
         setFloorArea(search.searchParams.minArea || '');
         SetBeds(search.searchParams.beds ? search.searchParams.beds.toString() : '');
         Setbaths(search.searchParams.baths ? search.searchParams.baths.toString() : '');
-    
+
         // Log to see what's being set
         console.log(locationCategory, priceRange, statusCategory, FloorArea, typeCategory, Beds, Baths);
-    
+
         // Call handleApplyFilter to apply the new filters
-        
+
     };
 
     useEffect(() => {
@@ -303,6 +303,27 @@ const Main = () => {
                         MenuProps={menuProps}
                         items={count}
                     ></FilterPanel>
+
+                    <div className="SidePanel">
+                        <FormControl className="Sort-Dropdown" sx={{ m: 1, width: 300 }}>
+                            <InputLabel shrink={true} id="sort-label">Sort By</InputLabel>
+                            <Select
+                                labelId="sort-label"
+                                id="sort"
+                                value={sortOption}
+                                
+                                input={<OutlinedInput label="Sort By" />}
+                                MenuProps={menuProps}
+                                displayEmpty
+                            >
+                                
+                                
+                            </Select>
+                        </FormControl>
+
+                        <div className="oftotal"> Results</div>
+
+                    </div>
 
                     <DataGridTable
                         data={data}

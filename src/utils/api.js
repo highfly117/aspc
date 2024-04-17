@@ -50,6 +50,7 @@ export const getProtectedResource2 = async (accessToken, user) => {
     };
 
     const response = await axios(config);
+    console.log(response)
     return response;
 };
 

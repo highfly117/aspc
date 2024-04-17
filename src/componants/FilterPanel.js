@@ -181,28 +181,22 @@ const FilterPanel = ({
                 <ExclusiveSelection label="Beds" onSelectionChange={handleExclusiveSelectionChange} />
 
                 <ExclusiveSelection label="Bathrooms" onSelectionChange={handlebathChange} />
-                <div className="buttonGroup">        
-                <Button style={{ marginTop: "0px" }} onClick={handleApplyFilter} className="ApplyButton" variant="contained">Apply Filter</Button>
-                <Button style={{ marginTop: "0px", backgroundColor:"#bbdabb" }} onClick={() => setModalOpen(true)} className="SaveSearchButton" variant="contained">Save Search</Button>
-                <SaveSearchModal 
+                <div className="buttonGroup">
+                    <Button style={{ marginTop: "0px" }} onClick={handleApplyFilter} className="ApplyButton" variant="contained">Apply Filter</Button>
+                    <Button style={{ marginTop: "0px", backgroundColor: "#bbdabb" }} onClick={() => setModalOpen(true)} className="SaveSearchButton" variant="contained">Save Search</Button>
+                    <SaveSearchModal
                         handleSaveSearch={handleSaveSearch}
                         isOpen={modalOpen}
                         onClose={() => setModalOpen(false)} />
                 </div>
-                <div  className='SignupWrapper' onClick={loginclick}>
+                <div className='SignupWrapper' onClick={loginclick}>
 
-                    <AccountCircleIcon style={{color:"#1976d2", fontSize:"2.15rem"}} /> {/* Icon component */}
+                    <AccountCircleIcon style={{ color: "#1976d2", fontSize: "2.15rem" }} /> {/* Icon component */}
                     <span className="myAccountText" >My Account</span> {/* Text next to icon */}
                 </div>
             </div>
-            {/* <div className="row" style={{justifyContent:"flex-end", marginRight:"20px", marginTop:"10px"}}>
 
-
-
-                           
-                        </div> */}
-
-            <FormControl className="Sort-Dropdown" sx={{ m: 1, width: 300 }}>
+            <div><FormControl className="Sort-Dropdown" sx={{ m: 1, width: 300 }}>
                 <InputLabel shrink={true} id="sort-label">Sort By</InputLabel>
                 <Select
                     labelId="sort-label"
@@ -221,7 +215,8 @@ const FilterPanel = ({
                 </Select>
             </FormControl>
 
-            <div className="oftotal">{items} Results</div>
+                <div className="oftotal">{items} Results</div></div>
+
 
 
 

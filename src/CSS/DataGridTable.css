@@ -44,7 +44,7 @@
 .lefttopsplit img {
   height: 100%;
   width: 100%;
-  
+  max-width: 158px;
 
 }
 
@@ -130,7 +130,7 @@ p {
   justify-content: space-between;
 }
 
-.PropertyStatus{
+.PropertyStatusUnderOffer{
   position: absolute;
   background: #80cc3d;
   font-size: 18px;
@@ -138,6 +138,29 @@ p {
   width: 316px !important;
   text-align: left;
   padding-left: 7px;
+  font-weight: 600;
+}
+
+.PropertyStatusClosing{
+  position: absolute;
+  background: purple;
+  font-size: 18px;
+  color: white;
+  width: 316px !important;
+  text-align: left;
+  padding-left: 7px;
+  font-weight: 600;
+}
+
+.PropertyStatusSold{
+  position: absolute;
+  background: black;
+  font-size: 18px;
+  color: lightgrey;
+  width: 316px !important;
+  text-align: left;
+  padding-left: 7px;
+  font-weight: 600;
 }
 
 .PropertyClass{

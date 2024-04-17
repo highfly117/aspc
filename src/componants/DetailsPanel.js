@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-pascal-case */
 import React, { useEffect, useState, useCallback } from "react";
 import {Button} from "@mui/material"
 import GoogleMapProperties from "./GoogleMap";
@@ -135,15 +136,16 @@ const DetailsPanel = ({ data, MapLocations, NewProperties, transformPropertyData
                 </TabPanel>
                 <TabPanel value={value} index={2}>
                 {savedSearches.map((search, index) => (
-                <div style={{marginBottom: '20px', display:"flex", flexDirection:"column", alignItems:"flex-start"}} key={search._id}>
-                    <h2>{search.Name.trim()}</h2>
-                    <p>Location(s): {search.searchParams.locations.join(', ')}</p>
-                    <p>Price Range: {search.searchParams.minPrice} to {search.searchParams.maxPrice}</p>
-                    <p>Minimum Area: {search.searchParams.minArea} square meters</p>
-                    {/* Conditional rendering for beds and baths if they are not null */}
-                    {search.searchParams.beds && <p>Beds: {search.searchParams.beds}</p>}
-                    {search.searchParams.baths && <p>Baths: {search.searchParams.baths}</p>}
-                    <Button  onClick={() => handlesearchchange(search)} variant="contained">Search</Button>
+                <div style={{marginBottom: '20px', display:"flex", flexDirection:"column", alignItems:"flex-start"}} key={search.search._id}>
+                    <h2>{search.search.Name.trim()}</h2>
+                    <p>Location(s): {search.search.searchParams.locations.join(', ')}</p>
+                    <p>Price Range: {search.search.searchParams.minPrice} to {search.search.searchParams.maxPrice}</p>
+                    <p>Minimum Area: {search.search.searchParams.minArea} square meters</p>
+                    {search.search.searchParams.beds && <p>Beds: {search.search.searchParams.beds}</p>}
+                    {search.search.searchParams.baths && <p>Baths: {search.search.searchParams.baths}</p>}
+                    <p>Search Results: {search.count}</p>
+                    <p>New in the Last 24Hr: {search.New24}</p>
+                    <Button  onClick={() => handlesearchchange(search.search)} variant="contained">Search</Button>
                 </div>
             ))}
                 </TabPanel>
