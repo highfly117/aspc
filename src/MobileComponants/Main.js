@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
-import "../MobileCSS/Main.css"
+import "../MobileCSS/MobileMain.css"
 import FilterPanel from "./FilterPanel";
 import DataGridTable from "./DataGridTable";
 import DetailsPanel from "./DetailsPanel";
@@ -270,9 +270,9 @@ const Main = () => {
 
     return (
 
-        <div className="Main">
-            <div className="MainPanel">
-                <div className="inputPanel">
+        <div className="MainMobile">
+            <div className="MainPanelMobile">
+                <div className="inputPanelMobile">
 
                     <FilterPanel
                         statusCategory={statusCategory}
@@ -303,7 +303,7 @@ const Main = () => {
                         items={count}
                     ></FilterPanel>
 
-                    <div className="SidePanel">
+                    {/* <div className="SidePanel">
                         <FormControl className="Sort-Dropdown" sx={{ m: 1, width: 300 }}>
                             <InputLabel shrink={true} id="sort-label">Sort By</InputLabel>
                             <Select
@@ -322,7 +322,7 @@ const Main = () => {
 
                         <div className="oftotal"> Results</div>
 
-                    </div>
+                    </div> */}
 
                     <DataGridTable
                         data={data}

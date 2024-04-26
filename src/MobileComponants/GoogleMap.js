@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import "../MobileCSS/Popups.css"
+import "../MobileCSS/MobilePopups.css"
 
 const loadGoogleMapsScript = (callback) => {
   const existingScript = document.getElementById('googleMapsScript');

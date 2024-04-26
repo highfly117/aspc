@@ -97,7 +97,7 @@ const Propertybanner = ({
             <div className="Rightsplit">
                 <div className="Righttopsplit">
                     <div className="Righttopleft">
-                        <h4 className="min-widthclass">{address}</h4>
+                        <h4 className="">{address}</h4>
                         <div style={{ display: "flex", alignItems: "end" }}>
                             <img className="PropertyClass" src={imgSrc} alt={Type}></img>
                             <img className="roomnumbers" src={bedSrc} alt={Bedrooms}></img>
@@ -109,14 +109,14 @@ const Propertybanner = ({
                         </div>
                     </div>
                     <div className="RighttopRight">
+                        <a style={{ marginTop: "auto", marginBottom: "5px",fontWeight:"700", textDecorationLine:"none" }} href={viewLink} target="_blank" rel="noopener noreferrer">View</a>
                         <img width={36} src={homesave} alt="Save" onClick={handleSave}></img>
                     </div>
 
                 </div>
                 <div className="RightbottomSplit" style={{ display: "flex", alignItems: "end" }}>
-                    <p className="addon">Added on {addedDate}</p>
+                    <p className="addon">Added {addedDate}</p>
                     <p className="sqm2">{size} - {pricePerMeter}</p>
-                    <a style={{ marginTop: "auto", marginBottom: "5px", position: "absolute", right: "35px",fontWeight:"700", textDecorationLine:"none" }} href={viewLink} target="_blank" rel="noopener noreferrer">View</a>
                 </div>
             </div>
         </div>

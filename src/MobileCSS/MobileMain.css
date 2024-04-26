@@ -1,9 +1,9 @@
-.Main {
+.MainMobile {
   overflow-y: hidden;
 
 }
 
-.MainPanel {
+.MainPanelMobile {
   position: absolute;
   height: 100%;
   width: 100%;
@@ -15,7 +15,7 @@
   overflow:hidden
 }
 
-.inputPanel {
+.inputPanelMobile {
   display: flex;
   justify-content: end;
   width: 100%;
@@ -24,7 +24,6 @@
 }
 
 .detailsPanel {
-
   width: 40%;
   overflow-y: auto;
   margin-left: 0;
@@ -39,14 +38,14 @@
   background: #fff !important;
 }
 
-.dataTable {
-  width: 80%;
-  margin-right: -5px;
-  margin-top:15px;
+.dataTableMobile {
+  width: 100%;
+  margin-right: 15px;
+  margin-left: 15px;
+  margin-top:20px;
   position: relative;
-  top: 90px;
+  top: 160px;
   overflow: auto;
-  padding-right: 20px;
   height: calc(100% - 90px);
   max-width:960px;
 }
@@ -72,7 +71,7 @@ tr:nth-child(even) {
   width: 100%;
   position: absolute;
   top: 0px;
-  height: 90px;
+  height: 160px;
   z-index: 2;
   background-color: rgb(255, 255, 255);
   padding-top: 15px;
@@ -131,6 +130,12 @@ max-width: 730px;
 .row {
   justify-content: flex-end;
     padding-right: 15px;
+}
+
+.bottomrow{
+  background: #1976d2;
+  display: flex;
+
 }
 
 .ApplyButton {
@@ -226,24 +231,19 @@ h5 {
   text-align: left;
 }
 
-.Sort-Dropdown {
-  position: absolute !important;
-  top: 95px;
-  left: 10px;
+.Sort-DropdownMobile {
   background: white;
-  width: 147px !important;
-
+  width: 125px !important;
+  position: relative !important;
 }
 
-.oftotal {
-  position: absolute !important;
-  top: 175px;
-  left: 10px;
+.oftotalMobile {
   background-color: white;
-  width: 147px !important;
+  width: 125px !important;
+  position: relative !important;
   font-weight: 400;
   margin: 8px;
-  font-size: 20px;
+  font-size: 18px;
   padding: 8px;
   border-radius: 4px;
   box-shadow: 0 3px 3px -3px rgba(0, 0, 0, .3);

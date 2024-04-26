@@ -197,7 +197,8 @@ const FilterPanel = ({
                 </div>
             </div>
 
-            <div><FormControl className="Sort-Dropdown" sx={{ m: 1, width: 300 }}>
+            <div className="bottomrow">
+                <FormControl className="Sort-DropdownMobile" sx={{ m: 1, width: 300 }}>
                 <InputLabel shrink={true} id="sort-label">Sort By</InputLabel>
                 <Select
                     labelId="sort-label"
@@ -216,7 +217,7 @@ const FilterPanel = ({
                 </Select>
             </FormControl>
 
-                <div className="oftotal">{items} Results</div></div>
+                <div className="oftotalMobile">{items} Results</div></div>
 
 
 

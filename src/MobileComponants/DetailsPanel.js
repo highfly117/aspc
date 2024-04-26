@@ -11,7 +11,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import SearchIcon from '@mui/icons-material/Search';
 import { useAuth0 } from "@auth0/auth0-react";
 import { getProtectedResource2 } from "../utils/api";
-import "../MobileCSS/DetailsPanel.css"
+import "../MobileCSS/MobileDetailsPanel.css"
 import { usePropertyData } from "../hooks/usePropertyData";
 
 const TabPanel = ({ value, index, children }) => {

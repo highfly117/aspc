@@ -166,18 +166,18 @@ p {
 .PropertyClass{
   width:32px;
   margin-Top:5px;
-  margin-Right:25px
+  margin-Right:15px
 }
 
 .roomnumbers{
   width: 32px;
     margin-Top: 5px;
-    margin-left: 20px;
-    margin-right: 12px;
+    margin-left: 10px;
+    margin-right: 8px;
 }
 
 .min-widthclass{
-  min-width: 450px;
+  
 }
 
 .spacer{

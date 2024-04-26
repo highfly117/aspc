@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Propertybanner from "./Propertybanner"; // Ensure this matches the file and component name exactly
-import "../MobileCSS/DataGridTable.css";
+import "../MobileCSS/MobileDataGridTable.css";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const DataGridTable = ({
@@ -26,7 +26,7 @@ const DataGridTable = ({
     
 
     return (
-        <div  className="dataTable">
+        <div  className="dataTableMobile">
             {data.map((item, index) => (
                 <Propertybanner
                     key={item._id}

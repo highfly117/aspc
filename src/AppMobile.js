@@ -7,7 +7,7 @@ import { CssBaseline } from '@mui/material';
 
 function AppMobile() {
   return (
-    <div className="App">
+    <div className="AppMobile">
       <CssBaseline />
       <Main></Main>
         
