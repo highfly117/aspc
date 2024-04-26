@@ -1,0 +1,187 @@
+.propertybanner {
+  /* background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(25, 118, 210) !important; */
+  display: flex;
+  background: #fff !important;
+  border-radius: 8px !important;
+  
+
+  margin-bottom: 20px;
+  width: 100%;
+  z-index: 1;
+  height: 135px !important;
+  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12);
+}
+
+.propertybanner.active {
+  background-color: rgba(187, 218, 187, 1) !important;
+}
+
+.Rightsplit {
+  text-align: left;
+  padding-left: 10px;
+  display: grid;
+  width: 100%;
+  max-width: 585px;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+}
+
+
+
+.leftsplit {
+  height: 100%;
+  min-width: 316px;
+  border-right: 1px solid lightgray;
+}
+
+.lefttopsplit {
+  height: 80%;
+  display: flex;
+}
+
+.lefttopsplit img {
+  height: 100%;
+  width: 100%;
+  max-width: 158px;
+
+}
+
+.firstimage {
+  border-top-left-radius: 8px;
+  max-width: 150px;
+}
+
+.Secondimage {}
+
+.leftbottomsplit {
+  text-align: left;
+  padding-left: 10px;
+  padding-right: 5px;
+
+  background-color: #f4f4f5;
+  height: 20%;
+  display: flex;
+  justify-content: space-between;
+  border-bottom-left-radius: 8px;
+
+}
+
+h1 {
+  margin-top: 0cqmax;
+  margin-bottom: 0px;
+  color: #1979e6;
+}
+
+h2 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+h3 {
+  margin-top: auto;
+  margin-bottom: auto;
+  font-size: 15px;
+  font-weight: 800;
+  color: rgb(80,80, 80);
+}
+
+h4 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+h5 {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.addon {
+  border: 3px solid purple;
+  border-radius: 12px;
+  padding: 10px;
+  font-size: 13px;
+  margin: 0px;
+  margin-bottom: 6px;
+  font-weight: 800;
+  color: purple;
+}
+
+.sqm2 {
+  border: 3px solid #1287a8;
+  border-radius: 12px;
+  padding: 10px;
+  font-size: 13px;
+  margin: 0px;
+  margin-bottom: 6px;
+  font-weight: 800;
+  color: #1287a8;
+  margin-left: 18px;
+}
+
+p {
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.Righttopsplit{
+  display: flex;
+  justify-content: space-between;
+}
+
+.PropertyStatusUnderOffer{
+  position: absolute;
+  background: #80cc3d;
+  font-size: 18px;
+  color: white;
+  width: 316px !important;
+  text-align: left;
+  padding-left: 7px;
+  font-weight: 600;
+}
+
+.PropertyStatusClosing{
+  position: absolute;
+  background: purple;
+  font-size: 18px;
+  color: white;
+  width: 316px !important;
+  text-align: left;
+  padding-left: 7px;
+  font-weight: 600;
+}
+
+.PropertyStatusSold{
+  position: absolute;
+  background: black;
+  font-size: 18px;
+  color: lightgrey;
+  width: 316px !important;
+  text-align: left;
+  padding-left: 7px;
+  font-weight: 600;
+}
+
+.PropertyClass{
+  width:32px;
+  margin-Top:5px;
+  margin-Right:25px
+}
+
+.roomnumbers{
+  width: 32px;
+    margin-Top: 5px;
+    margin-left: 20px;
+    margin-right: 12px;
+}
+
+.min-widthclass{
+  min-width: 450px;
+}
+
+.spacer{
+  margin-right: 10px;
+  font-size: 15px;
+  font-weight: 800;
+}
