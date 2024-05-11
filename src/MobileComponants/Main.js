@@ -36,7 +36,7 @@ const Main = () => {
 
     const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
 
-    const ITEM_HEIGHT = 48;
+    const ITEM_HEIGHT = 32;
     const ITEM_PADDING_TOP = 8;
 
     const menuProps = useMemo(() => ({

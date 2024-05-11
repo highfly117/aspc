@@ -103,8 +103,6 @@ max-width: 730px;
   width: 225px !important;
   margin-left: 30px !important;
 
-
-
 }
 
 .formControl2 {
@@ -170,7 +168,7 @@ max-width: 730px;
 }
 
 .MuiSelect-select {
-  height: 25px !important;
+  height: 10px !important;
   padding-top: 15px !important;
 }
 
@@ -233,8 +231,13 @@ h5 {
 
 .Sort-DropdownMobile {
   background: white;
-  width: 125px !important;
   position: relative !important;
+  margin: 8px;
+}
+
+#sort{
+  padding-top: 8px !important;
+  padding-bottom: 8px !important
 }
 
 .oftotalMobile {

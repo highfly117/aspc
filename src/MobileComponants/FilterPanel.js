@@ -198,16 +198,14 @@ const FilterPanel = ({
             </div>
 
             <div className="bottomrow">
-                <FormControl className="Sort-DropdownMobile" sx={{ m: 1, width: 300 }}>
-                <InputLabel shrink={true} id="sort-label">Sort By</InputLabel>
+                
                 <Select
-                    labelId="sort-label"
+                    className="Sort-DropdownMobile"
                     id="sort"
                     value={sortOption}
                     onChange={handleSortChange}
-                    input={<OutlinedInput label="Sort By" />}
                     MenuProps={MenuProps}
-                    displayEmpty
+                    
                 >
                     {sortOptions.map((option) => (
                         <MenuItem key={option.key} value={option.key}>
@@ -215,7 +213,7 @@ const FilterPanel = ({
                         </MenuItem>
                     ))}
                 </Select>
-            </FormControl>
+            
 
                 <div className="oftotalMobile">{items} Results</div></div>
 

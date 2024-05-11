@@ -337,7 +337,7 @@ const Main = () => {
 
                     <DetailsPanel
                         data={data}
-                        MapLocations={locationsForDetailsPanel}
+                        MapLocations={data}
                         NewProperties={New}
                         transformPropertyData={transformPropertyData}
                         handlesearchchange={handlesearchchange}
