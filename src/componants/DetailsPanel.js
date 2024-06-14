@@ -83,7 +83,7 @@ const DetailsPanel = ({ data, MapLocations, NewProperties, transformPropertyData
         <div className="detailsPanel">
             <div className="Mapbox">
                 {data.length > 0 ? (
-                    <MemoizedWeatherMap locations={MapLocations} />
+                    <GoogleMapProperties locations={MapLocations} />
                 ) : (
                     <div>Loading map...</div>
                 )}

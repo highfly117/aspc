@@ -47,6 +47,8 @@ const GoogleMapProperties = ({locations}) => {
   const mapRef = useRef(null); // This ref will point to the map DOM element
   const [mapLoaded, setMapLoaded] = useState(false);
 
+  
+
   useEffect(() => {
     loadGoogleMapsScript(() => setMapLoaded(true));
   }, []);
@@ -119,6 +121,11 @@ const GoogleMapProperties = ({locations}) => {
     content.innerHTML = `
       <div class="icon">
           <img src="${imgSrc}" alt="${property.Type}" title="${property.Type}" style="width: 32px; height: 32px;">
+          
+      </div>
+
+      <div class="img">
+          <img src="${property.ImageLink}" alt="${property.Type}" title="${property.Type}">
           
       </div>
       <div class="details">

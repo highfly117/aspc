@@ -38,7 +38,7 @@ function findGeographicCentroid(locations) {
     totalLng / count
   ];
 
-  
+  console.log(centroid)
 
   return centroid;
 }
@@ -60,7 +60,7 @@ const WeatherMap = (props) => {
 
   
   const position = props.locations.length === 1 ? [props.locations[0].postition.Latitude, props.locations[0].postition.Longitude] :
-  [57.295638388137146, -2.299246186296439];
+  [findGeographicCentroid(props.locations)[0],findGeographicCentroid(props.locations)[1]]; //57.295638388137146, -2.299246186296439
   const zoomNum = props.locations.length === 500 ? 8.7 : (props.locations.length === 1 ? 14 : 12);
 
   const MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoiaGlnaGZseTExNyIsImEiOiJjbGluNWR4amUwbDk5M2txcjcybTRpbGo0In0.pdrbNFR2lyks_o2aQizU9Q';
@@ -143,10 +143,10 @@ const WeatherMap = (props) => {
 
           return (
             <Marker
-              key={index} // Using a unique identifier from your data would be better if available
+              key={index} 
               position={[
-                location.postition?.Latitude || 0, // Use optional chaining with a fallback value
-                location.postition?.Longitude || 0  // Use optional chaining with a fallback value, corrected the typo 'postition' to 'position'
+                location.postition?.Latitude || 0, 
+                location.postition?.Longitude || 0  
               ]}
 
               icon={customIcon}

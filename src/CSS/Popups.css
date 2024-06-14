@@ -34,6 +34,10 @@
     justify-content: center;
     color: #FFFFFF;
   }
+
+  .property .img {
+    display: none;
+  }
   
   .property .icon svg {
     height: 20px;
@@ -90,10 +94,14 @@
   .property.highlight .details {
     display: flex;
   }
+
+  .property.highlight .img {
+    display: flex;
+    height: 100%;
+  }
   
-  .property.highlight .icon svg {
-    width: 50px;
-    height: 50px;
+  .property.highlight .icon {
+    display: none;
   }
   
   .property .bed {

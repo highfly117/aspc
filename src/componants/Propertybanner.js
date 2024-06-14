@@ -75,6 +75,15 @@ const Propertybanner = ({
     };
 
 
+    const formatPrice = (price) => {
+        const number = parseFloat(price.replace(/[^0-9.-]+/g, ""));
+        return new Intl.NumberFormat('en-UK', { 
+          style: 'currency', 
+          currency: 'GBP',
+          minimumFractionDigits: 0,
+          maximumFractionDigits: 0 
+        }).format(number);
+      };
 
 
 
@@ -90,7 +99,7 @@ const Propertybanner = ({
                     {imageUrl2?.[1] && <img className="secondimage" alt="House 2" src={imageUrl2[1] + "?width=149&quality=85&autorotate=true&quot"} />}
                 </div>
                 <div className="leftbottomsplit">
-                    <h3>{priceType} {price}</h3>
+                    <h3>{priceType} {formatPrice(price)}</h3>
 
                 </div>
             </div>

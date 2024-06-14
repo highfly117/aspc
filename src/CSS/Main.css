@@ -5,7 +5,7 @@
 
 .MainPanel {
   position: absolute;
-  height: 100%;
+  height: 100vh;
   width: 100%;
   top: 0px;
   left: 0px;
@@ -87,8 +87,6 @@ tr:nth-child(even) {
 }
 
 .Mapbox {
-  width: 100%;
-  height: 50%;
   background-color: rgb(255, 255, 255);
   border-radius: 5px !important;
   border-bottom: 3px solid rgb(25, 118, 210) !important;
