@@ -91,7 +91,7 @@ const DetailsPanel = ({ data, MapLocations, NewProperties, transformPropertyData
             <div className="Tabbox">
                 <Tabs value={value} onChange={handleChange} variant="fullWidth" aria-label="icon label tabs example">
                     <Tab icon={<FavoriteIcon />} label="FAVORITES" />
-                    <Tab icon={<AutoAwesomeIcon />} label="LATEST" />
+                    <Tab icon={<AutoAwesomeIcon />} label="NEW TODAY" />
                     <Tab icon={<SearchIcon />} label="SAVED SEARCHES" />
                 </Tabs>
                 <TabPanel value={value} index={1}>

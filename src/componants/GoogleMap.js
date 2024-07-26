@@ -24,9 +24,9 @@ function findGeographicCentroid(locations) {
   let count = 0;
 
   locations.forEach(location => {
-    if (location.postition && location.postition.Latitude && location.postition.Longitude) {
-      totalLat += location.postition.Latitude;
-      totalLng += location.postition.Longitude;
+    if (location.position && location.position.Latitude && location.position.Longitude) {
+      totalLat += location.position.Latitude;
+      totalLng += location.position.Longitude;
       count++;
     }
   });
@@ -66,10 +66,11 @@ const GoogleMapProperties = ({locations}) => {
         });
 
         locations.forEach((location) => {
+          console.log(location.position?.Latitude || 0)
           const marker = new AdvancedMarkerElement({
             map,
             content: buildContent(location),
-            position: { lat: location.postition?.Latitude || 0, lng: location.postition?.Longitude || 0},
+            position: { lat: location.position?.Latitude || 0, lng: location.position?.Longitude || 0},
             title: location.Address,
           });
 

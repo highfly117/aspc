@@ -112,19 +112,34 @@ const Main = () => {
     const propertyDataUrl = `${process.env.REACT_APP_API_URL_Properties}/datafilter`;
 
     const transformPropertyData = useCallback((data) => {
-        return data.map(item => ({
-            ...item,
-            id: item._id,
-            StatusType: item.Status.Type,
-            PriceType: item.Price.Type,
-            PriceValue: item.Price.Value,
-            Address: `${item.Address.Address1}, ${item.Address.Address2}, ${item.Address.Postcode}`,
-            postition: item.Address.position,
-            Type: item.Type?.replace(/^feature-/, '') ?? '',
-            ImageLink: item.ImageLink,
-            URL: item.URL,
-        }));
+        return data.map(item => {
+            const addressParts = [item.Address.Address1];
+            
+            if (item.Address.Address2) {
+                addressParts.push(item.Address.Address2);
+            }
+            
+            if (item.Address.Address3 && item.Address.Address3 !== item.Address.Address2) {
+                addressParts.push(item.Address.Address3);
+            }
+            
+            addressParts.push(item.Address.Postcode);
+    
+            return {
+                ...item,
+                id: item._id,
+                StatusType: item.Status.Type,
+                PriceType: item.Price.Type,
+                PriceValue: item.Price.Value,
+                Address: addressParts.join(', '),
+                position: item.Address.position,
+                Type: item.Type?.replace(/^feature-/, '') ?? '',
+                ImageLink: item.ImageLink,
+                URL: item.URL,
+            };
+        });
     }, []);
+    
 
 
 
